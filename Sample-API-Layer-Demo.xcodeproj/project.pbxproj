@@ -8,13 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		E10CE2BA1EA3672D008A5743 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CE2B91EA3672D008A5743 /* AppDelegate.swift */; };
-		E10CE2BC1EA3672D008A5743 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CE2BB1EA3672D008A5743 /* ViewController.swift */; };
 		E10CE2BF1EA3672D008A5743 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E10CE2BD1EA3672D008A5743 /* Main.storyboard */; };
 		E10CE2C11EA3672D008A5743 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E10CE2C01EA3672D008A5743 /* Assets.xcassets */; };
 		E10CE2C41EA3672D008A5743 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E10CE2C21EA3672D008A5743 /* LaunchScreen.storyboard */; };
-		E10CE2CF1EA3672E008A5743 /* Sample_API_Layer_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CE2CE1EA3672E008A5743 /* Sample_API_Layer_DemoTests.swift */; };
 		E10CE2DB1EA36A0D008A5743 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10CE2DA1EA36A0D008A5743 /* Alamofire.framework */; };
+		E12C3EB71EABB96D00553EB7 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12C3EB61EABB96D00553EB7 /* AsyncImageView.swift */; };
+		E12C3EB91EAC1CC000553EB7 /* AreaLMasters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12C3EB81EAC1CC000553EB7 /* AreaLMasters.swift */; };
+		E12C3EBA1EAC32E700553EB7 /* AreaLMasters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12C3EB81EAC1CC000553EB7 /* AreaLMasters.swift */; };
+		E12C3EBD1EAC644200553EB7 /* AreaSearchStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12C3EBC1EAC644200553EB7 /* AreaSearchStatus.swift */; };
+		E1315D641EA4FEAA00E57A6B /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1315D631EA4FEAA00E57A6B /* Himotoki.framework */; };
+		E1315D661EA51FFA00E57A6B /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1315D631EA4FEAA00E57A6B /* Himotoki.framework */; };
+		E1315D681EA5290C00E57A6B /* GnaviResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1315D671EA5290C00E57A6B /* GnaviResults.swift */; };
+		E1315D6A1EA666A100E57A6B /* Restraunt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1735ACA1EA3DC9200300490 /* Restraunt.swift */; };
+		E13FEEE91EAC987F0099C5D6 /* PrefactureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13FEEE81EAC987F0099C5D6 /* PrefactureTableViewCell.swift */; };
+		E13FEEEB1EACB2D90099C5D6 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13FEEEA1EACB2D90099C5D6 /* ResultsViewController.swift */; };
+		E14D04301EA7A3E500D9A8E4 /* AreaListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14D042F1EA7A3E500D9A8E4 /* AreaListsViewController.swift */; };
+		E14D04341EA7B3A500D9A8E4 /* Sample_API_Layer_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CE2CE1EA3672E008A5743 /* Sample_API_Layer_DemoTests.swift */; };
+		E14D04361EA7D17B00D9A8E4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14D04351EA7D17B00D9A8E4 /* BaseViewController.swift */; };
+		E14D04381EA91FD700D9A8E4 /* RestrauntTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14D04371EA91FD600D9A8E4 /* RestrauntTableViewCell.swift */; };
+		E14D043A1EA922EC00D9A8E4 /* RestrauntTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E14D04391EA922EB00D9A8E4 /* RestrauntTableViewCell.xib */; };
 		E1735AC41EA38BF700300490 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1735AC31EA38BF700300490 /* NetworkManager.swift */; };
+		E1735AC61EA3945500300490 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1735AC51EA3945500300490 /* Router.swift */; };
+		E1735AC81EA3B4AA00300490 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1735AC71EA3B4AA00300490 /* APIClient.swift */; };
+		E1735ACB1EA3DC9200300490 /* Restraunt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1735ACA1EA3DC9200300490 /* Restraunt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +46,6 @@
 /* Begin PBXFileReference section */
 		E10CE2B61EA3672D008A5743 /* Sample-API-Layer-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sample-API-Layer-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E10CE2B91EA3672D008A5743 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E10CE2BB1EA3672D008A5743 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E10CE2BE1EA3672D008A5743 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E10CE2C01EA3672D008A5743 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E10CE2C31EA3672D008A5743 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -39,7 +54,21 @@
 		E10CE2CE1EA3672E008A5743 /* Sample_API_Layer_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample_API_Layer_DemoTests.swift; sourceTree = "<group>"; };
 		E10CE2D01EA3672E008A5743 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E10CE2DA1EA36A0D008A5743 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		E12C3EB61EABB96D00553EB7 /* AsyncImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AsyncImageView.swift; path = Utils/AsyncImageView.swift; sourceTree = "<group>"; };
+		E12C3EB81EAC1CC000553EB7 /* AreaLMasters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AreaLMasters.swift; path = Models/AreaLMasters.swift; sourceTree = "<group>"; };
+		E12C3EBC1EAC644200553EB7 /* AreaSearchStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AreaSearchStatus.swift; path = Models/AreaSearchStatus.swift; sourceTree = "<group>"; };
+		E1315D631EA4FEAA00E57A6B /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/iOS/Himotoki.framework; sourceTree = "<group>"; };
+		E1315D671EA5290C00E57A6B /* GnaviResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GnaviResults.swift; path = Models/GnaviResults.swift; sourceTree = "<group>"; };
+		E13FEEE81EAC987F0099C5D6 /* PrefactureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrefactureTableViewCell.swift; path = Views/PrefactureTableViewCell.swift; sourceTree = "<group>"; };
+		E13FEEEA1EACB2D90099C5D6 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultsViewController.swift; path = Views/ResultsViewController.swift; sourceTree = "<group>"; };
+		E14D042F1EA7A3E500D9A8E4 /* AreaListsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AreaListsViewController.swift; path = Views/AreaListsViewController.swift; sourceTree = "<group>"; };
+		E14D04351EA7D17B00D9A8E4 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Views/BaseViewController.swift; sourceTree = "<group>"; };
+		E14D04371EA91FD600D9A8E4 /* RestrauntTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestrauntTableViewCell.swift; path = Views/RestrauntTableViewCell.swift; sourceTree = "<group>"; };
+		E14D04391EA922EB00D9A8E4 /* RestrauntTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RestrauntTableViewCell.xib; path = Views/RestrauntTableViewCell.xib; sourceTree = "<group>"; };
 		E1735AC31EA38BF700300490 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = Utils/NetworkManager.swift; sourceTree = "<group>"; };
+		E1735AC51EA3945500300490 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Router.swift; path = Utils/Router.swift; sourceTree = "<group>"; };
+		E1735AC71EA3B4AA00300490 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClient.swift; path = Utils/APIClient.swift; sourceTree = "<group>"; };
+		E1735ACA1EA3DC9200300490 /* Restraunt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Restraunt.swift; path = Models/Restraunt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1315D641EA4FEAA00E57A6B /* Himotoki.framework in Frameworks */,
 				E10CE2DB1EA36A0D008A5743 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1315D661EA51FFA00E57A6B /* Himotoki.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,12 +114,10 @@
 		E10CE2B81EA3672D008A5743 /* Sample-API-Layer-Demo */ = {
 			isa = PBXGroup;
 			children = (
+				E1735AD01EA3E7A200300490 /* Views */,
+				E1735ACF1EA3E78800300490 /* Others */,
+				E1735AC91EA3DA9400300490 /* Models */,
 				E1735ABF1EA38AC300300490 /* Utils */,
-				E10CE2B91EA3672D008A5743 /* AppDelegate.swift */,
-				E10CE2BB1EA3672D008A5743 /* ViewController.swift */,
-				E10CE2BD1EA3672D008A5743 /* Main.storyboard */,
-				E10CE2C01EA3672D008A5743 /* Assets.xcassets */,
-				E10CE2C21EA3672D008A5743 /* LaunchScreen.storyboard */,
 				E10CE2C51EA3672D008A5743 /* Info.plist */,
 			);
 			path = "Sample-API-Layer-Demo";
@@ -106,6 +135,7 @@
 		E10CE2D91EA36A0C008A5743 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1315D631EA4FEAA00E57A6B /* Himotoki.framework */,
 				E10CE2DA1EA36A0D008A5743 /* Alamofire.framework */,
 			);
 			name = Frameworks;
@@ -115,8 +145,46 @@
 			isa = PBXGroup;
 			children = (
 				E1735AC31EA38BF700300490 /* NetworkManager.swift */,
+				E1735AC51EA3945500300490 /* Router.swift */,
+				E1735AC71EA3B4AA00300490 /* APIClient.swift */,
+				E12C3EB61EABB96D00553EB7 /* AsyncImageView.swift */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		E1735AC91EA3DA9400300490 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E1735ACA1EA3DC9200300490 /* Restraunt.swift */,
+				E1315D671EA5290C00E57A6B /* GnaviResults.swift */,
+				E12C3EB81EAC1CC000553EB7 /* AreaLMasters.swift */,
+				E12C3EBC1EAC644200553EB7 /* AreaSearchStatus.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		E1735ACF1EA3E78800300490 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				E10CE2C01EA3672D008A5743 /* Assets.xcassets */,
+				E10CE2B91EA3672D008A5743 /* AppDelegate.swift */,
+			);
+			name = Others;
+			sourceTree = "<group>";
+		};
+		E1735AD01EA3E7A200300490 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E10CE2BD1EA3672D008A5743 /* Main.storyboard */,
+				E10CE2C21EA3672D008A5743 /* LaunchScreen.storyboard */,
+				E14D042F1EA7A3E500D9A8E4 /* AreaListsViewController.swift */,
+				E14D04351EA7D17B00D9A8E4 /* BaseViewController.swift */,
+				E14D04371EA91FD600D9A8E4 /* RestrauntTableViewCell.swift */,
+				E14D04391EA922EB00D9A8E4 /* RestrauntTableViewCell.xib */,
+				E13FEEE81EAC987F0099C5D6 /* PrefactureTableViewCell.swift */,
+				E13FEEEA1EACB2D90099C5D6 /* ResultsViewController.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +215,7 @@
 				E10CE2C61EA3672E008A5743 /* Sources */,
 				E10CE2C71EA3672E008A5743 /* Frameworks */,
 				E10CE2C81EA3672E008A5743 /* Resources */,
+				E1315D651EA51D7F00E57A6B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -207,6 +276,7 @@
 			files = (
 				E10CE2C41EA3672D008A5743 /* LaunchScreen.storyboard in Resources */,
 				E10CE2C11EA3672D008A5743 /* Assets.xcassets in Resources */,
+				E14D043A1EA922EC00D9A8E4 /* RestrauntTableViewCell.xib in Resources */,
 				E10CE2BF1EA3672D008A5743 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,6 +298,21 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Himotoki.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		E1315D651EA51D7F00E57A6B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Himotoki.framework",
 			);
 			outputPaths = (
 			);
@@ -242,9 +327,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1315D681EA5290C00E57A6B /* GnaviResults.swift in Sources */,
+				E12C3EB91EAC1CC000553EB7 /* AreaLMasters.swift in Sources */,
+				E13FEEE91EAC987F0099C5D6 /* PrefactureTableViewCell.swift in Sources */,
+				E14D04301EA7A3E500D9A8E4 /* AreaListsViewController.swift in Sources */,
+				E1735ACB1EA3DC9200300490 /* Restraunt.swift in Sources */,
+				E14D04381EA91FD700D9A8E4 /* RestrauntTableViewCell.swift in Sources */,
+				E12C3EB71EABB96D00553EB7 /* AsyncImageView.swift in Sources */,
+				E13FEEEB1EACB2D90099C5D6 /* ResultsViewController.swift in Sources */,
+				E1735AC61EA3945500300490 /* Router.swift in Sources */,
+				E14D04361EA7D17B00D9A8E4 /* BaseViewController.swift in Sources */,
 				E1735AC41EA38BF700300490 /* NetworkManager.swift in Sources */,
-				E10CE2BC1EA3672D008A5743 /* ViewController.swift in Sources */,
+				E1735AC81EA3B4AA00300490 /* APIClient.swift in Sources */,
 				E10CE2BA1EA3672D008A5743 /* AppDelegate.swift in Sources */,
+				E12C3EBD1EAC644200553EB7 /* AreaSearchStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,7 +348,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E10CE2CF1EA3672E008A5743 /* Sample_API_Layer_DemoTests.swift in Sources */,
+				E12C3EBA1EAC32E700553EB7 /* AreaLMasters.swift in Sources */,
+				E14D04341EA7B3A500D9A8E4 /* Sample_API_Layer_DemoTests.swift in Sources */,
+				E1315D6A1EA666A100E57A6B /* Restraunt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +519,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 9D8UR7H9D4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Sample-API-Layer-DemoTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.kohey.Sample-API-Layer-DemoTests";
@@ -436,6 +538,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 9D8UR7H9D4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Sample-API-Layer-DemoTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.kohey.Sample-API-Layer-DemoTests";

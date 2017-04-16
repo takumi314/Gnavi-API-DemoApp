@@ -15,7 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let navigation = UINavigationController()
+        let main = AreaListsViewController(nibName: nil, bundle: nil) //ViewController = Name of your controller
+        navigation.viewControllers = [main]
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window!.rootViewController = navigation
+        window?.makeKeyAndVisible()
+
         return true
     }
 
