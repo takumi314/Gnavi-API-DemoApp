@@ -14,6 +14,7 @@
 		E10CE2C41EA3672D008A5743 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E10CE2C21EA3672D008A5743 /* LaunchScreen.storyboard */; };
 		E10CE2CF1EA3672E008A5743 /* Sample_API_Layer_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CE2CE1EA3672E008A5743 /* Sample_API_Layer_DemoTests.swift */; };
 		E10CE2DB1EA36A0D008A5743 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10CE2DA1EA36A0D008A5743 /* Alamofire.framework */; };
+		E1735AC41EA38BF700300490 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1735AC31EA38BF700300490 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		E10CE2CE1EA3672E008A5743 /* Sample_API_Layer_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample_API_Layer_DemoTests.swift; sourceTree = "<group>"; };
 		E10CE2D01EA3672E008A5743 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E10CE2DA1EA36A0D008A5743 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		E1735AC31EA38BF700300490 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = Utils/NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 		E10CE2B81EA3672D008A5743 /* Sample-API-Layer-Demo */ = {
 			isa = PBXGroup;
 			children = (
+				E1735ABF1EA38AC300300490 /* Utils */,
 				E10CE2B91EA3672D008A5743 /* AppDelegate.swift */,
 				E10CE2BB1EA3672D008A5743 /* ViewController.swift */,
 				E10CE2BD1EA3672D008A5743 /* Main.storyboard */,
@@ -106,6 +109,14 @@
 				E10CE2DA1EA36A0D008A5743 /* Alamofire.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E1735ABF1EA38AC300300490 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E1735AC31EA38BF700300490 /* NetworkManager.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1735AC41EA38BF700300490 /* NetworkManager.swift in Sources */,
 				E10CE2BC1EA3672D008A5743 /* ViewController.swift in Sources */,
 				E10CE2BA1EA3672D008A5743 /* AppDelegate.swift in Sources */,
 			);
@@ -452,6 +464,7 @@
 				E10CE2D51EA3672E008A5743 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E10CE2D61EA3672E008A5743 /* Build configuration list for PBXNativeTarget "Sample-API-Layer-DemoTests" */ = {
 			isa = XCConfigurationList;
@@ -460,6 +473,7 @@
 				E10CE2D81EA3672E008A5743 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
