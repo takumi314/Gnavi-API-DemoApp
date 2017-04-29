@@ -172,25 +172,6 @@ extension ResultsViewController: UITableViewDelegate {
     }
 
     func moveToViewController(of indexPath: IndexPath) {
-//        let vc = AreaListsViewController()
-//        vc.title = "Restraunt"
-//        vc.masterType = .restraunt
-//
-//        if NetworkManager.isAvailable() {
-//            let api = APIClient()
-//            api.request(router: .content(1, "")) { [weak vc](response) in
-//                switch response {
-//                case .success(let data):
-//                    vc?.areas = AreaLMasters.organizer(data)
-//                    // テーブルにセットする
-//                    break
-//                case .failure(let error):
-//                    print(error)
-//                    break
-//                }
-//            }
-//        }
-//        navigationController?.pushViewController(vc, animated: true)
     }
 
 }

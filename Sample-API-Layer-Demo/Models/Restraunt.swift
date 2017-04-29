@@ -45,30 +45,17 @@ extension Restraunt: Decodable {
 
 extension Restraunt {
 
-//    typealias ModelType = GnaviResults
-//
-//    func asRestraunts(from object: Any) -> [Restraunt] {
-//        guard mapping(at: object, URLResponse: nil) != nil else {
-////            let rests = result.rest  else {
-//            return []
-//        }
-////        return rests
-//        return []
-//    }
-
     static func organizer(_ object: Any) -> [Restraunt] {
         guard let objects = object as? [String: Any],
             let first = objects.first?.value,
             let rests = first as? [[String: Any]] else {
                 return []
         }
-        print(mapping(with: rests))
         return mapping(with: rests)
     }
 
     private static func mapping(with restraunts: [[String: Any]]) -> [Restraunt] {
-        return restraunts
-            .flatMap {
+        return restraunts.flatMap {
                 return try? Restraunt.decodeValue($0)
         }
     }

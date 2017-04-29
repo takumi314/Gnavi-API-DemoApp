@@ -15,7 +15,7 @@ class AreaListsViewController: UIViewController {
     var areas: [Prefacture] = []
     var masterType: APIMasterType = .prefacture // default
 
-    // IBOutlets
+    // MAEK: - IBOutlets
 
     @IBOutlet weak var areaTableView: UITableView?
 
@@ -96,6 +96,8 @@ class AreaListsViewController: UIViewController {
 
 }
 
+// MAEK: - UITableViewDataSource
+
 extension AreaListsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -142,6 +144,8 @@ extension AreaListsViewController: UITableViewDataSource {
 
 }
 
+// MAEK: - UITableViewDelegate
+
 extension AreaListsViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -167,11 +171,4 @@ extension AreaListsViewController: UITableViewDelegate {
     }
 
 }
-
-
-
-
-
-
-
 

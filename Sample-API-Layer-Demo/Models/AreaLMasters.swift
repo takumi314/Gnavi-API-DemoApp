@@ -17,7 +17,6 @@ struct AreaLMasters {
             let prefs = first as? [[String: Any]] else {
                 return []
         }
-        print(mapping(with: prefs))
         return mapping(with: prefs)
     }
 
