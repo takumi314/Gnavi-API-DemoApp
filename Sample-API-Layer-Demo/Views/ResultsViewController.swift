@@ -106,10 +106,10 @@ extension ResultsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let masterString = master(of: self.masterType)
         guard let cell = Bundle.main.loadNibNamed(masterString, owner: nil, options: nil)?.first as? RestrauntTableViewCell else {
-            return UITableViewCell()
+            return RestrauntTableViewCell()
         }
         guard let rest = details?.rests[indexPath.row] else {
-            return UITableViewCell()
+            return RestrauntTableViewCell()
         }
 
         cell.setData(as: rest)

@@ -31,7 +31,8 @@ class RestrauntTableViewCell: UITableViewCell {
         let asynvImage = AsyncImageView()
         let url = rest.thumbnailURL
         asynvImage.loadImage(urlString: url) { [weak self] in
-            self?.thumbnailImage?.contentMode = .scaleAspectFit
+            self?.thumbnailImage?.contentMode = .scaleAspectFill
+            self?.thumbnailImage?.clipsToBounds = true
             self?.thumbnailImage?.image = asynvImage.image
         }
     }
