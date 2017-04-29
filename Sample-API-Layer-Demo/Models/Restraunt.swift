@@ -20,9 +20,9 @@ struct Restraunt {
     var id: String = ""
     var thumbnailURL: String = ""
     var name: String = ""
-    var adress: String = ""
+    var address: String = ""
     var station: String = ""
-    var walk: Int = 0
+    var walk: String = ""
     var tel: String = ""
 }
 
@@ -34,7 +34,7 @@ extension Restraunt: Decodable {
             id: e <| "id",
             thumbnailURL: e <| ["image_url", "shop_image1"],
             name: e <| "name",
-            adress: e <| "address",
+            address: e <| "address",
             station: e <| ["access", "station"],
             walk: e <| ["access", "walk"],
             tel: e <| "tel"

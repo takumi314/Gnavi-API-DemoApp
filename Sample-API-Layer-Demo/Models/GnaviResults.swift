@@ -7,10 +7,8 @@
 //
 
 import Foundation
-//import Himotoki
 
 class GnaviResults {
-
     var rests: [Restraunt] = []
     var page: Int = 0
     var pageOffset: Int = 0
@@ -26,27 +24,24 @@ extension GnaviResults {
         }
 
         let result = GnaviResults()
-        do {
-                for object in objects {
-                if object.key.description == "rest" {
-                    let value = object.value
-                    result.rests = try doMapping(by: value)
-                }
-                if object.key.description == "hit_per_page" {
-                    let value = object.value as! String
-                    result.page = try Int(value)!
-                }
-                if object.key.description == "page_offset" {
-                    let value = object.value as! String
-                    result.pageOffset = try Int(value)!
-                }
-                if object.key.description == "total_hit_count" {
-                    let value = object.value as! String
-                    result.count = try Int(value)!
-                }
+
+        for object in objects {
+            if object.key.description == "rest" {
+                let value = object.value
+                result.rests = doMapping(by: value)
             }
-        } catch {
-            print("error")
+            if object.key.description == "hit_per_page" {
+                let value = object.value as! String
+                result.page = Int(value)!
+            }
+            if object.key.description == "page_offset" {
+                let value = object.value as! String
+                result.pageOffset = Int(value)!
+            }
+            if object.key.description == "total_hit_count" {
+                let value = object.value as! String
+                result.count = Int(value)!
+            }
         }
         return result
 
@@ -73,11 +68,12 @@ extension GnaviResults {
                 }
                 rest.id = value
             }
-            if let value = object["thumbnailURL"] {
-                guard let value = value as? String else {
+            if let value = object["image_url"] as? [String: Any] {
+                guard let image1 = value["shop_image1"],
+                    let url1 = image1 as? String else {
                     continue
                 }
-                rest.thumbnailURL = value
+                rest.thumbnailURL = url1
             }
             if let value = object["name"] {
                 guard let value = value as? String else {
@@ -85,23 +81,23 @@ extension GnaviResults {
                 }
                 rest.name = value
             }
-            if let value = object["adress"] {
+            if let value = object["address"] {
                 guard let value = value as? String else {
                     continue
                 }
-                rest.adress = value
+                rest.address = value
             }
-            if let value = object["station"] {
-                guard let value = value as? String else {
+            if let value = object["access"] as? [String: Any] {
+                guard let value1 = value["station"],
+                    let station = value1 as? String else {
                     continue
                 }
-                rest.station = value
-            }
-            if let value = object["walk"] {
-                guard let value = value as? String else {
+                rest.station = station
+                guard let value2 = value["walk"],
+                    let walk = value2 as? String else {
                     continue
                 }
-                rest.walk = Int(value)!
+                rest.walk = walk
             }
             rests.append(rest)
         }

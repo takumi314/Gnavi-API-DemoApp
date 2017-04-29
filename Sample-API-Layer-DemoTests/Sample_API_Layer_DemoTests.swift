@@ -83,7 +83,7 @@ class Sample_API_Layer_DemoTests: XCTestCase {
 //        var JSON: [String: Any] = ["name": "Hoge ほげ屋",
 //                                   "access": ["station": "東京",
 //                                              "walk": 5],
-//                                   "adress": "埼玉県北本市",
+//                                   "address": "埼玉県北本市",
 //                                   "image_url": ["shop_image1": "https://yahoo.co.jp"],
 //                                   "budget": 5000,
 //                                   "tel": "0000-00-0001"]
@@ -93,7 +93,7 @@ class Sample_API_Layer_DemoTests: XCTestCase {
 //        XCTAssert(group?.name == "Hoge ほげ屋")
 //        XCTAssert(group?.station == "東京")
 //        XCTAssert(group?.walk == 5)
-//        XCTAssert(group?.adress == "埼玉県北本市")
+//        XCTAssert(group?.address == "埼玉県北本市")
 //        XCTAssert(group?.tel == "0000-00-0001")
 //        XCTAssert(group?.budget == 5000)
 //        XCTAssert(group?.thumbnailURL == "https://yahoo.co.jp")
