@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Himotoki
+//import Himotoki
 
 class GnaviResults {
 
