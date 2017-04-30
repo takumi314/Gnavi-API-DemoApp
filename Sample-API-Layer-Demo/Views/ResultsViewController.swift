@@ -8,6 +8,8 @@
 
 import UIKit
 
+let ONCE_READ_COUNT = 50
+
 class ResultsViewController: UIViewController {
 
     // MAEK: - Properties
@@ -179,9 +181,14 @@ extension ResultsViewController: UITableViewDelegate {
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let tableView = resultTableView else {
+            return
+        }
+
         //一番下までスクロールしたかどうか
-        if (resultTableView?.contentOffset.y)! >= (resultTableView?.contentSize.height)! - (resultTableView?.bounds.size.height)! {
+        if tableView.contentOffset.y >= tableView.contentSize.height - tableView.bounds.size.height {
             //まだ表示するコンテンツが存在するか判定し存在するなら○件分を取得して表示更新する
+            print("the lowest")
         }
     }
 
