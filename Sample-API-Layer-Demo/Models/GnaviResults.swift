@@ -28,7 +28,7 @@ extension GnaviResults {
         for object in objects {
             if object.key.description == "rest" {
                 let value = object.value
-                result.rests = doMapping(by: value)
+                result.rests = mapping(by: value)
             }
             if object.key.description == "hit_per_page" {
                 let value = object.value as! String
@@ -47,7 +47,7 @@ extension GnaviResults {
 
     }
 
-    private func doMapping(by data: Any) -> [Restraunt] {
+    private func mapping(by data: Any) -> [Restraunt] {
         guard let objects = data as? [[String: Any]] else {
             return []
         }
