@@ -19,6 +19,7 @@ class ResultsViewController: UIViewController {
     var masterType: APIMasterType = .restraunt // default
 
     var prefCode: String = ""
+    var onLoading = false
 
     // IBOutlets
 
@@ -61,7 +62,7 @@ class ResultsViewController: UIViewController {
 
     // MARK: - Private methods
 
-    private func loadRestraunts(onPage page: Int) {
+    fileprivate func loadRestraunts(onPage page: Int) {
         if NetworkManager.isAvailable() {
             let api = APIClient()
             api.request(router: .content(page, prefCode)) { [weak self]response in
@@ -181,14 +182,73 @@ extension ResultsViewController: UITableViewDelegate {
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard let tableView = resultTableView else {
+        guard let tableView = resultTableView, let details = self.details else {
+            return
+        }
+        // オーバースクロールすると検索開始
+        let lengthOnSwitching: CGFloat = 100.0
+
+        // 検索中は拒絶
+        if onLoading {
+            onLoading = true
             return
         }
 
+        //一番上までスクロールしたかどうか
+        if (-lengthOnSwitching) > tableView.contentOffset.y {
+            if 1 >= details.pageOffset {
+                return
+            }
+
+            onLoading = true
+            tableView.isPagingEnabled = false
+            tableView.isUserInteractionEnabled = false
+            loadRestraunts(onPage: details.pageOffset - 1)
+
+            // 一番下にセット
+            DispatchQueue.main.asyncAfter(wallDeadline: .now() + 2.6, execute: { [weak self] in
+                print("Loading")
+                self?.title = self?.details?.pageOffset.description
+
+                let bottomPoint = CGPoint(x: 0, y: tableView.contentSize.height - tableView.bounds.size.height - lengthOnSwitching)
+                self?.resultTableView?.setContentOffset(bottomPoint, animated: false)
+
+                // 完了後に実行
+                tableView.isPagingEnabled = true
+                tableView.isUserInteractionEnabled = true
+                self?.onLoading = false
+            })
+        }
+
         //一番下までスクロールしたかどうか
-        if tableView.contentOffset.y >= tableView.contentSize.height - tableView.bounds.size.height {
-            //まだ表示するコンテンツが存在するか判定し存在するなら○件分を取得して表示更新する
-            print("the lowest")
+        if tableView.contentOffset.y >= tableView.contentSize.height - tableView.bounds.size.height + lengthOnSwitching {
+            print("touched the bottom")
+            //まだ表示するコンテンツが存在するか
+            if details.page * details.pageOffset >= details.count {
+                return
+            }
+
+            onLoading = true
+            tableView.isPagingEnabled = false
+            tableView.isUserInteractionEnabled = false
+            loadRestraunts(onPage: details.pageOffset + 1)
+
+            DispatchQueue.main.asyncAfter(wallDeadline: .now() + 2.6, execute: { [weak self] in
+                print("Loading")
+                self?.title = self?.details?.pageOffset.description
+
+                // 完了後に実行
+                tableView.isPagingEnabled = true
+                tableView.isUserInteractionEnabled = true
+                self?.onLoading = false
+            })
+
+            // 1, Searching is on.
+            // 2. 遅延処理を開始
+            // 3. get started to load from API
+            // 4.
+            // 5.
+            // 6.
         }
     }
 
