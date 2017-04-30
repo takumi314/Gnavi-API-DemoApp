@@ -24,21 +24,7 @@ class AreaListsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Prefacture"
-        if NetworkManager.isAvailable() {
-            let api = APIClient()
-            api.request(router: .pref) { [weak self](response) in
-                switch response {
-                case .success(let data):
-                    self?.areas = AreaLMasters.organizer(data)
-                    self?.setAreaTableView()
-                    break
-                case .failure(let error):
-                    print(error)
-                    break
-                }
-            }
-        }
-
+        loadPrefactures()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -69,6 +55,25 @@ class AreaListsViewController: UIViewController {
     }
 
     // MARK: - Private methods
+
+    private func loadPrefactures() {
+        if NetworkManager.isAvailable() {
+            let api = APIClient()
+            api.request(router: .pref) { [weak self](response) in
+                switch response {
+                case .success(let data):
+                    self?.areas = AreaLMasters.organizer(data)
+                    self?.setAreaTableView()
+                    break
+                case .failure(let error):
+                    print(error)
+                    break
+                }
+            }
+        } else {
+            print("Failed to access")
+        }
+    }
 
     private func setAreaTableView() {
         let tableFrame = masureVisibleArea()

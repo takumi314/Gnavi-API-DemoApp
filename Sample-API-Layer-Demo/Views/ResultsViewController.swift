@@ -27,23 +27,12 @@ class ResultsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Results"
-        if NetworkManager.isAvailable() {
-            let api = APIClient()
-            api.request(router: .content(1, prefCode)) { [weak self]response in
-                switch response {
-                case .success(let data):
-                    guard let details =  GnaviResults().organizer(data) else { break }
-                    self?.details = details
-                    self?.setResultTableView()
+        loadRestraunts(onPage: 1)
+    }
 
-                    // テーブルにセットする
-                    break
-                case .failure(let error):
-                    print(error)
-                    break
-                }
-            }
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        resultTableView?.reloadData()
+        super.viewWillAppear(animated)
     }
 
     override func viewWillLayoutSubviews() {
@@ -52,11 +41,6 @@ class ResultsViewController: UIViewController {
             resultTableView?.removeFromSuperview()
         }
         setResultTableView()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        resultTableView?.reloadData()
-        super.viewWillAppear(animated)
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -74,6 +58,26 @@ class ResultsViewController: UIViewController {
     }
 
     // MARK: - Private methods
+
+    private func loadRestraunts(onPage page: Int) {
+        if NetworkManager.isAvailable() {
+            let api = APIClient()
+            api.request(router: .content(page, prefCode)) { [weak self]response in
+                switch response {
+                case .success(let data):
+                    guard let details =  GnaviResults().organizer(data) else { break }
+                    self?.details = details
+                    self?.setResultTableView()
+
+                    // テーブルにセットする
+                    break
+                case .failure(let error):
+                    print(error)
+                    break
+                }
+            }
+        }
+    }
 
     private func setResultTableView() {
         let tableFrame = masureVisibleArea()
@@ -172,6 +176,13 @@ extension ResultsViewController: UITableViewDelegate {
     }
 
     func moveToViewController(of indexPath: IndexPath) {
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //一番下までスクロールしたかどうか
+        if (resultTableView?.contentOffset.y)! >= (resultTableView?.contentSize.height)! - (resultTableView?.bounds.size.height)! {
+            //まだ表示するコンテンツが存在するか判定し存在するなら○件分を取得して表示更新する
+        }
     }
 
 }
