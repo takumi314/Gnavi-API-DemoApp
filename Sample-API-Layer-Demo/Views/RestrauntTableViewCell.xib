@@ -91,6 +91,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="address" destination="AfF-g8-eUb" id="D6m-LB-N9N"/>
                 <outlet property="budget" destination="Bfw-g9-6O1" id="vxa-Bg-5oa"/>
                 <outlet property="name" destination="fIP-ct-SRL" id="wnO-rD-6Z8"/>
                 <outlet property="tel" destination="EZT-Iz-brE" id="hDD-zE-QDe"/>
