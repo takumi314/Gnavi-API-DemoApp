@@ -21,6 +21,8 @@ class ResultsViewController: UIViewController {
     var prefCode: String = ""
     var onLoading = false
 
+    private var refreshControl: UIRefreshControl?
+
     // IBOutlets
 
     @IBOutlet weak var resultTableView: UITableView?
@@ -40,19 +42,19 @@ class ResultsViewController: UIViewController {
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        if resultTableView != nil {
+        if let _ = resultTableView {
             resultTableView?.removeFromSuperview()
         }
         setResultTableView()
+        addRefreshControl()
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        //
         coordinator.animate(alongsideTransition: { (UIViewControllerTransitionCoordinatorContext) -> Void in
-            //
+
         }, completion: { (UIViewControllerTransitionCoordinatorContext) -> Void in
-            //
+
         })
     }
 
@@ -62,7 +64,37 @@ class ResultsViewController: UIViewController {
 
     // MARK: - Private methods
 
-    fileprivate func loadRestraunts(onPage page: Int) {
+    func addRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: "更新...")
+        refreshControl?.addTarget(self,
+                                  action: #selector(refresh),
+                                  for: UIControlEvents.valueChanged)
+        resultTableView?.addSubview(refreshControl!)
+    }
+
+    func refresh(sender: UIRefreshControl) {
+        // ここに通信処理などデータフェッチの処理を書く
+        guard let refreshControl = self.refreshControl,
+            let pageOffset = details?.pageOffset else {
+            return
+        }
+        refreshControl.beginRefreshing()
+        DispatchQueue
+            .main
+            .asyncAfter(wallDeadline: .now() + 1.0,
+                        execute: { [weak self] in
+                            self?.loadRestraunts(onPage: pageOffset)
+                            self?.resultTableView?.reloadData()
+                            if #available(iOS 10.0, *) {
+                                self?.resultTableView?.refreshControl?.endRefreshing()
+                            } else {
+                                self?.refreshControl?.endRefreshing()
+                            }
+            })
+    }
+
+    func loadRestraunts(onPage page: Int) {
         if NetworkManager.isAvailable() {
             let api = APIClient()
             api.request(router: .content(page, prefCode)) { [weak self]response in
@@ -71,7 +103,6 @@ class ResultsViewController: UIViewController {
                     guard let details =  GnaviResults().organizer(data) else { break }
                     self?.details = details
                     self?.setResultTableView()
-
                     // テーブルにセットする
                     break
                 case .failure(let error):
