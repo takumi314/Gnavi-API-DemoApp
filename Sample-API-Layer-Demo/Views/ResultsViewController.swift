@@ -112,7 +112,7 @@ class ResultsViewController: UIViewController {
     }
 
     private func setResultTableView() {
-        let tableFrame = masureVisibleArea()
+        let tableFrame = measureVisibleArea()
         let tableView = UITableView(frame: tableFrame, style: .plain)
 
         resultTableView = registerNib(for: tableView)
@@ -131,15 +131,23 @@ class ResultsViewController: UIViewController {
         return tableView
     }
 
-    private func masureVisibleArea() -> CGRect {
+    private func measureVisibleArea() -> CGRect {
         // 画面サイズ
         let size = UIScreen.main.bounds
         // ステータスバーの高さを取得
-        let statusBarHeight = UIApplication.shared.statusBarFrame.height
-        // ナビゲーションバーの高さを取得
-        let navBarHeight = self.navigationController?.navigationBar.frame.size.height
-        let tableSize = CGSize(width: size.width, height: size.height - statusBarHeight - navBarHeight!)
-        let point = CGPoint(x: 0, y: 0 + statusBarHeight + navBarHeight!)
+        let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
+        // ナビゲーションバー
+        let navBarFrame = self.navigationController?.navigationBar.frame
+        // タブバー
+        let tabBarFrame = super.tabBarController?.tabBar.frame
+        guard let navBarHeight = navBarFrame?.size.height, let tabBarHeight = tabBarFrame?.size.height else {
+            let tableSize = CGSize(width: size.width, height: size.height - 32.0 - 49.0)
+            let point = CGPoint(x: 0, y: 0 + statusBarHeight + 32)
+            return CGRect(origin: point, size: tableSize)
+        }
+
+        let tableSize = CGSize(width: size.width, height: size.height - navBarHeight - statusBarHeight - tabBarHeight)
+        let point = CGPoint(x: 0, y: 0 + navBarHeight + statusBarHeight)
 
         return CGRect(origin: point, size: tableSize)
     }
