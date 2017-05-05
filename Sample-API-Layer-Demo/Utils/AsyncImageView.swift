@@ -22,22 +22,22 @@ class AsyncImageView: UIImageView {
         let config =  URLSessionConfiguration.default
         let session = URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue.main)
 
-        session.dataTask(with: request,
-                         completionHandler: { [weak self] (data, request, error) in
-                            if error == nil {
-                                //Success
-                                guard let imageData
-                                    = try? NSData(contentsOf: url as URL,
-                                                  options: NSData.ReadingOptions.mappedIfSafe) as Data else {
-                                                    return
-                                        }
-                                self?.image = UIImage(data: imageData)
-                                completion()
-                            } else {
-                                //Error
-                                print("AsyncImageView:Error \(String(describing: error?.localizedDescription))")
-                            }
-                        }).resume()
+        session
+            .dataTask(with: request) { [weak self] (data, request, error) in
+                if error == nil {
+                    //Success
+                    guard let imageData
+                        = try? NSData(contentsOf: url as URL,
+                                      options: NSData.ReadingOptions.mappedIfSafe) as Data else {
+                                        return
+                    }
+                    self?.image = UIImage(data: imageData)
+                    completion()
+                } else {
+                    //Error
+                    print("AsyncImageView:Error \(String(describing: error?.localizedDescription))")
+                }
+            }.resume()
 
     }
     

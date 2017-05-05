@@ -8,6 +8,8 @@
 
 import UIKit
 
+let ONCE_READ_COUNT = 50
+
 class ResultsViewController: UIViewController {
 
     // MAEK: - Properties
@@ -17,6 +19,9 @@ class ResultsViewController: UIViewController {
     var masterType: APIMasterType = .restraunt // default
 
     var prefCode: String = ""
+    var onLoading = false
+
+    private var refreshControl: UIRefreshControl?
 
     // IBOutlets
 
@@ -37,19 +42,19 @@ class ResultsViewController: UIViewController {
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        if resultTableView != nil {
+        if let _ = resultTableView {
             resultTableView?.removeFromSuperview()
         }
         setResultTableView()
+        addRefreshControl()
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        //
         coordinator.animate(alongsideTransition: { (UIViewControllerTransitionCoordinatorContext) -> Void in
-            //
+
         }, completion: { (UIViewControllerTransitionCoordinatorContext) -> Void in
-            //
+
         })
     }
 
@@ -59,7 +64,37 @@ class ResultsViewController: UIViewController {
 
     // MARK: - Private methods
 
-    private func loadRestraunts(onPage page: Int) {
+    func addRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: "更新...")
+        refreshControl?.addTarget(self,
+                                  action: #selector(refresh),
+                                  for: UIControlEvents.valueChanged)
+        resultTableView?.addSubview(refreshControl!)
+    }
+
+    func refresh(sender: UIRefreshControl) {
+        // ここに通信処理などデータフェッチの処理を書く
+        guard let refreshControl = self.refreshControl,
+            let pageOffset = details?.pageOffset else {
+            return
+        }
+        refreshControl.beginRefreshing()
+        DispatchQueue
+            .main
+            .asyncAfter(wallDeadline: .now() + 1.0,
+                        execute: { [weak self] in
+                            self?.loadRestraunts(onPage: pageOffset)
+                            self?.resultTableView?.reloadData()
+                            if #available(iOS 10.0, *) {
+                                self?.resultTableView?.refreshControl?.endRefreshing()
+                            } else {
+                                self?.refreshControl?.endRefreshing()
+                            }
+            })
+    }
+
+    func loadRestraunts(onPage page: Int) {
         if NetworkManager.isAvailable() {
             let api = APIClient()
             api.request(router: .content(page, prefCode)) { [weak self]response in
@@ -68,7 +103,6 @@ class ResultsViewController: UIViewController {
                     guard let details =  GnaviResults().organizer(data) else { break }
                     self?.details = details
                     self?.setResultTableView()
-
                     // テーブルにセットする
                     break
                 case .failure(let error):
@@ -83,11 +117,20 @@ class ResultsViewController: UIViewController {
         let tableFrame = masureVisibleArea()
         let tableView = UITableView(frame: tableFrame, style: .plain)
 
-        resultTableView = tableView
+        resultTableView = registerNib(for: tableView)
         resultTableView?.backgroundColor = UIColor.orange
         resultTableView?.delegate = self
         resultTableView?.dataSource = self
         view.addSubview(resultTableView!)
+    }
+
+    private func registerNib(for tableView: UITableView?) -> UITableView {
+        guard let tableView = tableView else {
+            return UITableView()
+        }
+        let nib = UINib(nibName: master(of: .restraunt), bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "rest")
+        return tableView
     }
 
     private func masureVisibleArea() -> CGRect {
@@ -108,15 +151,11 @@ class ResultsViewController: UIViewController {
 extension ResultsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let masterString = master(of: self.masterType)
-        guard let cell = Bundle.main.loadNibNamed(masterString, owner: nil, options: nil)?.first as? RestrauntTableViewCell else {
-            return RestrauntTableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "rest") as? RestrauntTableViewCell,
+            let rest = details?.rests[indexPath.row]else {
+                return RestrauntTableViewCell()
         }
-        guard let rest = details?.rests[indexPath.row] else {
-            return RestrauntTableViewCell()
-        }
-
-        cell.setData(as: rest)
+        cell.displayContent(of: rest)
         return cell
     }
 
@@ -179,10 +218,72 @@ extension ResultsViewController: UITableViewDelegate {
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //一番下までスクロールしたかどうか
-        if (resultTableView?.contentOffset.y)! >= (resultTableView?.contentSize.height)! - (resultTableView?.bounds.size.height)! {
-            //まだ表示するコンテンツが存在するか判定し存在するなら○件分を取得して表示更新する
+        guard let tableView = resultTableView, let details = self.details else {
+            return
         }
+        // 検索を開始する閾値
+        let lengthOnSwitching: CGFloat = 90.0
+
+        // 検索中は拒絶
+        if onLoading {
+            onLoading = true
+            return
+        }
+
+        //一番上までスクロールしたかどうか
+        if (-lengthOnSwitching) > tableView.contentOffset.y {
+            turnToPrevious(page: details.pageOffset + 1)
+        }
+
+        //一番下までスクロールしたとき
+        if tableView.contentOffset.y >= tableView.contentSize.height - tableView.bounds.size.height + lengthOnSwitching {
+            print("touched the bottom")
+            turnToNext(page: details.pageOffset + 1)
+        }
+    }
+
+    fileprivate func turnToNext(page nextPage: Int) {
+        guard let details = self.details else {
+                return
+        }
+        // まだ表示するコンテンツが存在するか
+        if details.page * nextPage >= details.count {
+            return
+        }
+        beginLoadingContents(of: nextPage)
+        self.title = nextPage.description
+    }
+
+    fileprivate func turnToPrevious(page previousPage: Int) {
+        guard let details = self.details else {
+            return
+        }
+        if 1 >= details.pageOffset {
+            return
+        }
+        beginLoadingContents(of: previousPage)
+        self.title = previousPage.description
+
+    }
+
+    fileprivate func beginLoadingContents(of page: Int) {
+        guard let tableView = self.resultTableView else {
+            return
+        }
+        onLoading = true
+        tableView.isPagingEnabled = false
+        tableView.isUserInteractionEnabled = false
+        loadRestraunts(onPage: page)
+        print("begin Loading")
+        DispatchQueue
+            .main
+            .asyncAfter(wallDeadline: .now() + 1.6,
+                        execute: { [weak self] in
+                            // 完了後に実行
+                            tableView.isPagingEnabled = true
+                            tableView.isUserInteractionEnabled = true
+                            self?.onLoading = false
+            })
     }
 
 }

@@ -44,7 +44,7 @@ enum Router: URLRequestConvertible {
                         "callback": "",
                         "pref": pref,
                         "areacode_l": "",
-                        "hit_per_page": 50,
+                        "hit_per_page": ONCE_READ_COUNT,
                         "offset_page": nextPage]
             case .area:
                 return ["keyid": "",
