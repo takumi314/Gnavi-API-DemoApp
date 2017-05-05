@@ -8,6 +8,8 @@
 
 import Alamofire
 
+let ONCE_READ_COUNT = 50
+
 enum Router: URLRequestConvertible {
 
     static let baseURLPath = "https://api.gnavi.co.jp/"
@@ -38,14 +40,14 @@ enum Router: URLRequestConvertible {
     func asURLRequest() throws -> URLRequest {
         let parameters: [String: Any] = {
             switch self {
-            case .content(let nextPage, let pref):
+            case .content(let page, let pref):
                 return ["keyid": Router.accessKey,
                         "format": "json",
                         "callback": "",
                         "pref": pref,
                         "areacode_l": "",
                         "hit_per_page": ONCE_READ_COUNT,
-                        "offset_page": nextPage]
+                        "offset_page": page]
             case .area:
                 return ["keyid": "",
                         "format": "json",

@@ -8,8 +8,6 @@
 
 import UIKit
 
-let ONCE_READ_COUNT = 50
-
 class ResultsViewController: UIViewController {
 
     // MAEK: - Properties
