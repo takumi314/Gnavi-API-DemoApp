@@ -155,7 +155,7 @@ extension ResultsViewController: UITableViewDataSource {
             let rest = details?.rests[indexPath.row]else {
                 return RestrauntTableViewCell()
         }
-        cell.setData(of: rest)
+        cell.displayContent(of: rest)
         return cell
     }
 

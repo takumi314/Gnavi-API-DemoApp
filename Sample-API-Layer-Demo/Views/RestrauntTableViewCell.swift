@@ -26,7 +26,7 @@ class RestrauntTableViewCell: UITableViewCell {
             return
         }
         setData(as: restraunt)
-        setImageData()
+        loadImageData(from: imageURL)
     }
 
     fileprivate func setData(as restraunt: Restraunt?) {
@@ -41,7 +41,7 @@ class RestrauntTableViewCell: UITableViewCell {
         self.imageURL = rest.thumbnailURL
     }
 
-    fileprivate func setImageData() {
+    fileprivate func loadImageData(from: String?) {
         thumbnailImage?.image = nil
 
         guard let url = self.imageURL else { return }
