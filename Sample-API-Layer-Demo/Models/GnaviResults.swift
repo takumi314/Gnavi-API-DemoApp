@@ -57,10 +57,10 @@ extension GnaviResults {
             var rest = Restraunt()
 
             if let value = object["budget"] {
-                guard let value = value as? String else {
+                guard let budget = value as? String else {
                     continue
                 }
-                rest.budget = Int(value)!
+                rest.budget = Int(budget)!
             }
             if let value = object["id"] {
                 guard let value = value as? String else {
