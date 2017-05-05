@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E10AD6BF1EBCB87900B7FA3F /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10AD6BE1EBCB87900B7FA3F /* MainTabBarController.swift */; };
 		E10CE2BA1EA3672D008A5743 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CE2B91EA3672D008A5743 /* AppDelegate.swift */; };
 		E10CE2BF1EA3672D008A5743 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E10CE2BD1EA3672D008A5743 /* Main.storyboard */; };
 		E10CE2C11EA3672D008A5743 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E10CE2C01EA3672D008A5743 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E10AD6BE1EBCB87900B7FA3F /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTabBarController.swift; path = Views/MainTabBarController.swift; sourceTree = "<group>"; };
 		E10CE2B61EA3672D008A5743 /* Sample-API-Layer-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sample-API-Layer-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E10CE2B91EA3672D008A5743 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E10CE2BE1EA3672D008A5743 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				E14D04371EA91FD600D9A8E4 /* RestrauntTableViewCell.swift */,
 				E13FEEE81EAC987F0099C5D6 /* PrefactureTableViewCell.swift */,
 				E13FEEEA1EACB2D90099C5D6 /* ResultsViewController.swift */,
+				E10AD6BE1EBCB87900B7FA3F /* MainTabBarController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 			files = (
 				E1315D681EA5290C00E57A6B /* GnaviResults.swift in Sources */,
 				E12C3EB91EAC1CC000553EB7 /* AreaLMasters.swift in Sources */,
+				E10AD6BF1EBCB87900B7FA3F /* MainTabBarController.swift in Sources */,
 				E13FEEE91EAC987F0099C5D6 /* PrefactureTableViewCell.swift in Sources */,
 				E14D04301EA7A3E500D9A8E4 /* AreaListsViewController.swift in Sources */,
 				E1735ACB1EA3DC9200300490 /* Restraunt.swift in Sources */,
