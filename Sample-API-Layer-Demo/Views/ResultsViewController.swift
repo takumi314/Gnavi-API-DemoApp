@@ -117,11 +117,20 @@ class ResultsViewController: UIViewController {
         let tableFrame = masureVisibleArea()
         let tableView = UITableView(frame: tableFrame, style: .plain)
 
-        resultTableView = tableView
+        resultTableView = registerNib(for: tableView)
         resultTableView?.backgroundColor = UIColor.orange
         resultTableView?.delegate = self
         resultTableView?.dataSource = self
         view.addSubview(resultTableView!)
+    }
+
+    private func registerNib(for tableView: UITableView?) -> UITableView {
+        guard let tableView = tableView else {
+            return UITableView()
+        }
+        let nib = UINib(nibName: master(of: .restraunt), bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "rest")
+        return tableView
     }
 
     private func masureVisibleArea() -> CGRect {
@@ -142,15 +151,11 @@ class ResultsViewController: UIViewController {
 extension ResultsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let masterString = master(of: self.masterType)
-        guard let cell = Bundle.main.loadNibNamed(masterString, owner: nil, options: nil)?.first as? RestrauntTableViewCell else {
-            return RestrauntTableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "rest") as? RestrauntTableViewCell,
+            let rest = details?.rests[indexPath.row]else {
+                return RestrauntTableViewCell()
         }
-        guard let rest = details?.rests[indexPath.row] else {
-            return RestrauntTableViewCell()
-        }
-
-        cell.setData(as: rest)
+        cell.setData(of: rest)
         return cell
     }
 
