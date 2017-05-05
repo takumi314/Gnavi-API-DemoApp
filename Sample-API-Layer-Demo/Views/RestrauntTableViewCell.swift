@@ -21,7 +21,7 @@ class RestrauntTableViewCell: UITableViewCell {
     private var imageURL: String?
 
     // 店名、最寄り駅（徒歩何分）、住所、電話番号、予算、サムネイル画像をセットする.
-    func setData(of restraunt: Restraunt?) {
+    func displayContent(of restraunt: Restraunt?) {
         guard let restraunt = restraunt else {
             return
         }
@@ -41,10 +41,10 @@ class RestrauntTableViewCell: UITableViewCell {
         self.imageURL = rest.thumbnailURL
     }
 
-    fileprivate func loadImageData(from: String?) {
+    fileprivate func loadImageData(from imageURL: String?) {
         thumbnailImage?.image = nil
 
-        guard let url = self.imageURL else { return }
+        guard let url = imageURL else { return }
         let global = DispatchQueue.global(qos: .default)
         let main = DispatchQueue.main
 
