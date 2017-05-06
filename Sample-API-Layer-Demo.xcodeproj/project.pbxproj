@@ -207,9 +207,9 @@
 				E10CE2C21EA3672D008A5743 /* LaunchScreen.storyboard */,
 				E14D04351EA7D17B00D9A8E4 /* BaseViewController.swift */,
 				E10AD6BE1EBCB87900B7FA3F /* MainTabBarController.swift */,
-				E10AD6C31EBE1D0300B7FA3F /* ThirdTabViews */,
-				E10AD6C21EBE1CE800B7FA3F /* SecondTabViews */,
 				E10AD6C11EBD87DA00B7FA3F /* FirstTabViews */,
+				E10AD6C21EBE1CE800B7FA3F /* SecondTabViews */,
+				E10AD6C31EBE1D0300B7FA3F /* ThirdTabViews */,
 			);
 			name = Views;
 			sourceTree = "<group>";
