@@ -62,7 +62,7 @@ class ResultsViewController: UIViewController {
 
     // MARK: - Private methods
 
-    func addRefreshControl() {
+    private func addRefreshControl() {
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: "更新...")
         refreshControl?.addTarget(self,
@@ -71,7 +71,7 @@ class ResultsViewController: UIViewController {
         resultTableView?.addSubview(refreshControl!)
     }
 
-    func refresh(sender: UIRefreshControl) {
+    func refresh() {
         // ここに通信処理などデータフェッチの処理を書く
         guard let refreshControl = self.refreshControl,
             let pageOffset = details?.pageOffset else {
@@ -92,7 +92,7 @@ class ResultsViewController: UIViewController {
             })
     }
 
-    func loadRestraunts(onPage page: Int) {
+    fileprivate func loadRestraunts(onPage page: Int) {
         if NetworkManager.isAvailable() {
             let api = APIClient()
             api.request(router: .content(page, prefCode)) { [weak self]response in
@@ -111,8 +111,8 @@ class ResultsViewController: UIViewController {
         }
     }
 
-    private func setResultTableView() {
-        let tableFrame = masureVisibleArea()
+    fileprivate func setResultTableView() {
+        let tableFrame = measureVisibleArea()
         let tableView = UITableView(frame: tableFrame, style: .plain)
 
         resultTableView = registerNib(for: tableView)
@@ -122,7 +122,7 @@ class ResultsViewController: UIViewController {
         view.addSubview(resultTableView!)
     }
 
-    private func registerNib(for tableView: UITableView?) -> UITableView {
+    fileprivate func registerNib(for tableView: UITableView?) -> UITableView {
         guard let tableView = tableView else {
             return UITableView()
         }
@@ -131,15 +131,23 @@ class ResultsViewController: UIViewController {
         return tableView
     }
 
-    private func masureVisibleArea() -> CGRect {
+    fileprivate func measureVisibleArea() -> CGRect {
         // 画面サイズ
         let size = UIScreen.main.bounds
         // ステータスバーの高さを取得
-        let statusBarHeight = UIApplication.shared.statusBarFrame.height
-        // ナビゲーションバーの高さを取得
-        let navBarHeight = self.navigationController?.navigationBar.frame.size.height
-        let tableSize = CGSize(width: size.width, height: size.height - statusBarHeight - navBarHeight!)
-        let point = CGPoint(x: 0, y: 0 + statusBarHeight + navBarHeight!)
+        let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
+        // ナビゲーションバー
+        let navBarFrame = self.navigationController?.navigationBar.frame
+        // タブバー
+        let tabBarFrame = super.tabBarController?.tabBar.frame
+        guard let navBarHeight = navBarFrame?.size.height, let tabBarHeight = tabBarFrame?.size.height else {
+            let tableSize = CGSize(width: size.width, height: size.height - 32.0 - 49.0)
+            let point = CGPoint(x: 0, y: 0 + statusBarHeight + 32)
+            return CGRect(origin: point, size: tableSize)
+        }
+
+        let tableSize = CGSize(width: size.width, height: size.height - navBarHeight - statusBarHeight - tabBarHeight)
+        let point = CGPoint(x: 0, y: 0 + navBarHeight + statusBarHeight)
 
         return CGRect(origin: point, size: tableSize)
     }
