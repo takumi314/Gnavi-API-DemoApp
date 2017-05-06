@@ -31,6 +31,10 @@ class MainTabBarController: UITabBarController {
 
         self.setViewControllers(controllers, animated: false)
 
+        // デフォルト0, 最初に1をセットしないとうまくいかない
+        self.selectedIndex = 1
+        self.selectedIndex = 0
+
         AppDelegate().window = UIWindow(frame: UIScreen.main.bounds)
         AppDelegate().window?.rootViewController = self
         AppDelegate().window?.makeKeyAndVisible()
