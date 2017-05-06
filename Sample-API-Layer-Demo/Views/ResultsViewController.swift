@@ -62,7 +62,7 @@ class ResultsViewController: UIViewController {
 
     // MARK: - Private methods
 
-    func addRefreshControl() {
+    private func addRefreshControl() {
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: "更新...")
         refreshControl?.addTarget(self,
@@ -71,7 +71,7 @@ class ResultsViewController: UIViewController {
         resultTableView?.addSubview(refreshControl!)
     }
 
-    func refresh(sender: UIRefreshControl) {
+    func refresh() {
         // ここに通信処理などデータフェッチの処理を書く
         guard let refreshControl = self.refreshControl,
             let pageOffset = details?.pageOffset else {
@@ -92,7 +92,7 @@ class ResultsViewController: UIViewController {
             })
     }
 
-    func loadRestraunts(onPage page: Int) {
+    fileprivate func loadRestraunts(onPage page: Int) {
         if NetworkManager.isAvailable() {
             let api = APIClient()
             api.request(router: .content(page, prefCode)) { [weak self]response in
@@ -111,7 +111,7 @@ class ResultsViewController: UIViewController {
         }
     }
 
-    private func setResultTableView() {
+    fileprivate func setResultTableView() {
         let tableFrame = measureVisibleArea()
         let tableView = UITableView(frame: tableFrame, style: .plain)
 
@@ -122,7 +122,7 @@ class ResultsViewController: UIViewController {
         view.addSubview(resultTableView!)
     }
 
-    private func registerNib(for tableView: UITableView?) -> UITableView {
+    fileprivate func registerNib(for tableView: UITableView?) -> UITableView {
         guard let tableView = tableView else {
             return UITableView()
         }
@@ -131,7 +131,7 @@ class ResultsViewController: UIViewController {
         return tableView
     }
 
-    private func measureVisibleArea() -> CGRect {
+    fileprivate func measureVisibleArea() -> CGRect {
         // 画面サイズ
         let size = UIScreen.main.bounds
         // ステータスバーの高さを取得
