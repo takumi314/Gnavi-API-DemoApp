@@ -13,7 +13,7 @@ enum Result {
     case failure(Error)
 }
 
-class APIClient {
+struct APIClient {
 
     func request(router: Router, completion: @escaping (Result) -> Void = {_ in } ) {
         Alamofire
