@@ -12,7 +12,7 @@ protocol Accessable {
     static func isAvailable() -> Bool
 }
 
-class NetworkManager: Accessable {
+struct NetworkManager: Accessable {
 
     static func isAvailable() -> Bool {
         guard let manager = NetworkReachabilityManager() else {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GnaviResults {
+struct GnaviResults {
     var rests: [Restraunt] = []
     var page: Int = 0
     var pageOffset: Int = 0
@@ -23,7 +23,7 @@ extension GnaviResults {
             return nil
         }
 
-        let result = GnaviResults()
+        var result = GnaviResults()
 
         for object in objects {
             if object.key.description == "rest" {
