@@ -240,8 +240,8 @@
 		E1AC10B4205E55940085B679 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				E1AC10B5205E55EE0085B679 /* Api+Restraunt.swift */,
 				E1AC10B8205E580F0085B679 /* GnaviApi.swift */,
+				E1AC10B5205E55EE0085B679 /* Api+Restraunt.swift */,
 				E1AC10BB205EB3E10085B679 /* Api+Prefactures.swift */,
 			);
 			name = API;
