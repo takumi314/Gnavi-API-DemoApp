@@ -58,18 +58,9 @@ class AreaListsViewController: UIViewController {
 
     private func loadPrefactures() {
         if NetworkManager.isAvailable() {
-            let api = APIClient()
-            api.request(router: .pref) { [weak self](response) in
-                switch response {
-                case .success(let data):
-                    let area = try! JSONDecoder().decode(AreaLMasters.self, from: data)
-                    self?.areas = area.prefs
-                    self?.setAreaTableView()
-                    break
-                case .failure(let error):
-                    print(error)
-                    break
-                }
+            APIClient.shared.requestPrefactures {
+                (prefactures: [Prefacture]) in
+                self.areas = prefactures
             }
         } else {
             print("Failed to access")
@@ -177,7 +168,7 @@ extension AreaListsViewController: UITableViewDelegate {
         let prefCode = areas[indexPath.row].prefCode
         let vc = ResultsViewController()
         vc.title = "Restraunt"
-        vc.prefCode = prefCode
+        vc.prefCode = Int(prefCode)!
         vc.masterType = .restraunt
         
         navigationController?.pushViewController(vc, animated: true)
