@@ -8,12 +8,6 @@
 
 import Foundation
 
-protocol JSONMappable {
-    associatedtype ModelType
-    func mapping(at object: Any, URLResponse: HTTPURLResponse?) throws -> ModelType?
-}
-
-
 struct Restraunt: Codable {
     var budget: Int = 0
     var id: String = ""
