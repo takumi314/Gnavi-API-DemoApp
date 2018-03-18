@@ -37,6 +37,8 @@
 		E1AC10B2205D73E90085B679 /* GnaviResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1315D671EA5290C00E57A6B /* GnaviResults.swift */; };
 		E1AC10B6205E55EE0085B679 /* Api+Restraunt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC10B5205E55EE0085B679 /* Api+Restraunt.swift */; };
 		E1AC10B7205E55EE0085B679 /* Api+Restraunt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC10B5205E55EE0085B679 /* Api+Restraunt.swift */; };
+		E1AC10B9205E580F0085B679 /* GnaviApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC10B8205E580F0085B679 /* GnaviApi.swift */; };
+		E1AC10BA205E580F0085B679 /* GnaviApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC10B8205E580F0085B679 /* GnaviApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,7 @@
 		E1AC10AB205D3B410085B679 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		E1AC10AD205D3B760085B679 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		E1AC10B5205E55EE0085B679 /* Api+Restraunt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Api+Restraunt.swift"; path = "API/Api+Restraunt.swift"; sourceTree = "<group>"; };
+		E1AC10B8205E580F0085B679 /* GnaviApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GnaviApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				E1AC10B5205E55EE0085B679 /* Api+Restraunt.swift */,
+				E1AC10B8205E580F0085B679 /* GnaviApi.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -402,6 +406,7 @@
 				E1735AC41EA38BF700300490 /* NetworkManager.swift in Sources */,
 				E1735AC81EA3B4AA00300490 /* APIClient.swift in Sources */,
 				E10CE2BA1EA3672D008A5743 /* AppDelegate.swift in Sources */,
+				E1AC10B9205E580F0085B679 /* GnaviApi.swift in Sources */,
 				E12C3EBD1EAC644200553EB7 /* AreaSearchStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,6 +415,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1AC10BA205E580F0085B679 /* GnaviApi.swift in Sources */,
 				E1AC10B2205D73E90085B679 /* GnaviResults.swift in Sources */,
 				E12C3EBA1EAC32E700553EB7 /* AreaLMasters.swift in Sources */,
 				E14D04341EA7B3A500D9A8E4 /* Sample_API_Layer_DemoTests.swift in Sources */,
