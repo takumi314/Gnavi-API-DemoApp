@@ -39,6 +39,8 @@
 		E1AC10B7205E55EE0085B679 /* Api+Restraunt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC10B5205E55EE0085B679 /* Api+Restraunt.swift */; };
 		E1AC10B9205E580F0085B679 /* GnaviApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC10B8205E580F0085B679 /* GnaviApi.swift */; };
 		E1AC10BA205E580F0085B679 /* GnaviApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC10B8205E580F0085B679 /* GnaviApi.swift */; };
+		E1AC10BC205EB3E10085B679 /* Api+Prefactures.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC10BB205EB3E10085B679 /* Api+Prefactures.swift */; };
+		E1AC10BD205EB3E10085B679 /* Api+Prefactures.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC10BB205EB3E10085B679 /* Api+Prefactures.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,7 @@
 		E1AC10AD205D3B760085B679 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		E1AC10B5205E55EE0085B679 /* Api+Restraunt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Api+Restraunt.swift"; path = "API/Api+Restraunt.swift"; sourceTree = "<group>"; };
 		E1AC10B8205E580F0085B679 /* GnaviApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GnaviApi.swift; sourceTree = "<group>"; };
+		E1AC10BB205EB3E10085B679 /* Api+Prefactures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Api+Prefactures.swift"; path = "API/Api+Prefactures.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +242,7 @@
 			children = (
 				E1AC10B5205E55EE0085B679 /* Api+Restraunt.swift */,
 				E1AC10B8205E580F0085B679 /* GnaviApi.swift */,
+				E1AC10BB205EB3E10085B679 /* Api+Prefactures.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -398,6 +402,7 @@
 				E14D04301EA7A3E500D9A8E4 /* AreaListsViewController.swift in Sources */,
 				E1735ACB1EA3DC9200300490 /* Restraunt.swift in Sources */,
 				E14D04381EA91FD700D9A8E4 /* RestrauntTableViewCell.swift in Sources */,
+				E1AC10BC205EB3E10085B679 /* Api+Prefactures.swift in Sources */,
 				E12C3EB71EABB96D00553EB7 /* AsyncImageView.swift in Sources */,
 				E13FEEEB1EACB2D90099C5D6 /* ResultsViewController.swift in Sources */,
 				E1735AC61EA3945500300490 /* Router.swift in Sources */,
@@ -420,6 +425,7 @@
 				E12C3EBA1EAC32E700553EB7 /* AreaLMasters.swift in Sources */,
 				E14D04341EA7B3A500D9A8E4 /* Sample_API_Layer_DemoTests.swift in Sources */,
 				E1315D6A1EA666A100E57A6B /* Restraunt.swift in Sources */,
+				E1AC10BD205EB3E10085B679 /* Api+Prefactures.swift in Sources */,
 				E1AC10B7205E55EE0085B679 /* Api+Restraunt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
