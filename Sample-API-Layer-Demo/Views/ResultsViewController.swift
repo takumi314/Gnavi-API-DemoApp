@@ -71,7 +71,7 @@ class ResultsViewController: UIViewController {
         resultTableView?.addSubview(refreshControl!)
     }
 
-    func refresh() {
+    @objc func refresh() {
         // ここに通信処理などデータフェッチの処理を書く
         guard let refreshControl = self.refreshControl,
             let pageOffset = details?.pageOffset else {
@@ -98,8 +98,7 @@ class ResultsViewController: UIViewController {
             api.request(router: .content(page, prefCode)) { [weak self]response in
                 switch response {
                 case .success(let data):
-                    guard let details =  GnaviResults().organizer(data) else { break }
-                    self?.details = details
+                    self?.details = try? JSONDecoder().decode(GnaviResults.self, from: data)
                     self?.setResultTableView()
                     // テーブルにセットする
                     break

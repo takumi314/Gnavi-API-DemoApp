@@ -62,7 +62,8 @@ class AreaListsViewController: UIViewController {
             api.request(router: .pref) { [weak self](response) in
                 switch response {
                 case .success(let data):
-                    self?.areas = AreaLMasters.organizer(data)
+                    let area = try! JSONDecoder().decode(AreaLMasters.self, from: data)
+                    self?.areas = area.prefs
                     self?.setAreaTableView()
                     break
                 case .failure(let error):

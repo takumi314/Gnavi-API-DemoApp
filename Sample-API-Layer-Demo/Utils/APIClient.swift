@@ -8,17 +8,17 @@
 
 import Alamofire
 
-enum Result {
-    case success(Any)
+enum Result<T> {
+    case success(T)
     case failure(Error)
 }
 
 struct APIClient {
 
-    func request(router: Router, completion: @escaping (Result) -> Void = {_ in } ) {
+    func request(router: Router, completion: @escaping (Result<Data>) -> Void = {_ in } ) {
         Alamofire
             .request(router)
-            .responseJSON { response in
+            .responseData { response in
                 switch response.result {
                 case .success(let data):
                     completion(Result.success(data))

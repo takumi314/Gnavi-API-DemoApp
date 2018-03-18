@@ -1,5 +1,4 @@
 # Elegant HTTP Networking in Swift
-github "Alamofire/Alamofire"
 github "ikesyo/Himotoki" ~> 3.0
 github "Moya/Moya"
 
