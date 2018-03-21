@@ -8,100 +8,29 @@
 
 import Foundation
 
-struct GnaviResults {
+struct GnaviResults: Codable {
     var rests: [Restraunt] = []
     var page: Int = 0
     var pageOffset: Int = 0
     var count: Int = 0
-}
 
-
-extension GnaviResults {
-
-    func organizer(_ data: Any) -> GnaviResults? {
-        guard let objects = data as? [String: Any] else {
-            return nil
-        }
-
-        var result = GnaviResults()
-
-        for object in objects {
-            if object.key.description == "rest" {
-                let value = object.value
-                result.rests = mapping(by: value)
-            }
-            if object.key.description == "hit_per_page" {
-                let value = object.value as! String
-                result.page = Int(value)!
-            }
-            if object.key.description == "page_offset" {
-                let value = object.value as! String
-                result.pageOffset = Int(value)!
-            }
-            if object.key.description == "total_hit_count" {
-                let value = object.value as! String
-                result.count = Int(value)!
-            }
-        }
-        return result
-
+    enum Key: String, CodingKey {
+        case rests = "rest"
+        case page = "hit_per_page"
+        case pageOffset = "page_offset"
+        case count = "total_hit_count"
     }
 
-    private func mapping(by data: Any) -> [Restraunt] {
-        guard let objects = data as? [[String: Any]] else {
-            return []
-        }
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: Key.self)
 
-        var rests: [Restraunt] = []
-        for object in objects {
-            var rest = Restraunt()
-
-            if let value = object["budget"] {
-                guard let budget = value as? String else {
-                    continue
-                }
-                rest.budget = Int(budget)!
-            }
-            if let value = object["id"] {
-                guard let value = value as? String else {
-                    continue
-                }
-                rest.id = value
-            }
-            if let value = object["image_url"] as? [String: Any] {
-                guard let image1 = value["shop_image1"],
-                    let url1 = image1 as? String else {
-                    continue
-                }
-                rest.thumbnailURL = url1
-            }
-            if let value = object["name"] {
-                guard let value = value as? String else {
-                    continue
-                }
-                rest.name = value
-            }
-            if let value = object["address"] {
-                guard let value = value as? String else {
-                    continue
-                }
-                rest.address = value
-            }
-            if let value = object["access"] as? [String: Any] {
-                guard let value1 = value["station"],
-                    let station = value1 as? String else {
-                    continue
-                }
-                rest.station = station
-                guard let value2 = value["walk"],
-                    let walk = value2 as? String else {
-                    continue
-                }
-                rest.walk = walk
-            }
-            rests.append(rest)
-        }
-
-        return rests
+        self.rests      = try container.decode([Restraunt].self, forKey: .rests)
+        let page = try container.decode(String.self, forKey: .page)
+        self.page = Int(page)!
+        let pageOffset = try container.decode(String.self, forKey: .pageOffset)
+        self.pageOffset = Int(pageOffset)!
+        let count = try container.decode(String.self, forKey: .count)
+        self.count = Int(count)!
     }
 }
+

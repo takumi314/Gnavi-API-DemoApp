@@ -12,11 +12,10 @@ class ResultsViewController: UIViewController {
 
     // MAEK: - Properties
 
-    var restraunts: [Restraunt] = []
     var details: GnaviResults?
     var masterType: APIMasterType = .restraunt // default
 
-    var prefCode: String = ""
+    var prefCode: Int = -1
     var onLoading = false
 
     private var refreshControl: UIRefreshControl?
@@ -71,7 +70,7 @@ class ResultsViewController: UIViewController {
         resultTableView?.addSubview(refreshControl!)
     }
 
-    func refresh() {
+    @objc func refresh() {
         // ここに通信処理などデータフェッチの処理を書く
         guard let refreshControl = self.refreshControl,
             let pageOffset = details?.pageOffset else {
@@ -92,22 +91,16 @@ class ResultsViewController: UIViewController {
             })
     }
 
+    
+
     fileprivate func loadRestraunts(onPage page: Int) {
         if NetworkManager.isAvailable() {
-            let api = APIClient()
-            api.request(router: .content(page, prefCode)) { [weak self]response in
-                switch response {
-                case .success(let data):
-                    guard let details =  GnaviResults().organizer(data) else { break }
-                    self?.details = details
-                    self?.setResultTableView()
-                    // テーブルにセットする
-                    break
-                case .failure(let error):
-                    print(error)
-                    break
-                }
+            APIClient.shared.requestRestraunt(prefCode: prefCode, onPage: page) {
+                (results: GnaviResults) in
+                self.details = results
             }
+        } else {
+            print("Failed to access")
         }
     }
 
@@ -283,12 +276,13 @@ extension ResultsViewController: UITableViewDelegate {
         print("begin Loading")
         DispatchQueue
             .main
-            .asyncAfter(wallDeadline: .now() + 1.6,
-                        execute: { [weak self] in
-                            // 完了後に実行
-                            tableView.isPagingEnabled = true
-                            tableView.isUserInteractionEnabled = true
-                            self?.onLoading = false
+            .asyncAfter(
+                wallDeadline: .now() + 1.6,
+                execute: { [weak self] in
+                    // 完了後に実行
+                    tableView.isPagingEnabled = true
+                    tableView.isUserInteractionEnabled = true
+                    self?.onLoading = false
             })
     }
 

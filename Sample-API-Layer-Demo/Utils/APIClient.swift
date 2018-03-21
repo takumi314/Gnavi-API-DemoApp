@@ -7,29 +7,52 @@
 //
 
 import Alamofire
+import RxSwift
+import RxMoya
+import Moya
 
-enum Result {
-    case success(Any)
+enum Result<T> {
+    case success(T)
     case failure(Error)
 }
 
 struct APIClient {
 
-    func request(router: Router, completion: @escaping (Result) -> Void = {_ in } ) {
-        Alamofire
-            .request(router)
-            .responseJSON { response in
-                switch response.result {
-                case .success(let data):
-                    completion(Result.success(data))
-                case .failure:
-                    if let error = response.result.error {
-                        completion(Result.failure(error))
-                    } else {
-                        fatalError("Error instance is nil")
-                    }
-                }
-            }
+    public static let shared = APIClient()
+
+    private let provider = MoyaProvider<MultiTarget>()
+    private let disposeBag = DisposeBag()
+
+    private func request<G: GnaviApiTargetType>(_ request: G) -> Single<G.Response> {
+        return provider.rx
+                .request(MultiTarget(request))
+                .filterSuccessfulStatusCodes()
+                .map(G.Response.self)
     }
 
+    func requestPrefactures(onSuccess: @escaping ([Prefacture]) -> Void) {
+        APIClient.shared
+            .request(Gnavi.GetPrefactures())
+            .subscribe(
+                onSuccess: { (areaL) in
+                    print(areaL)
+                    onSuccess(areaL.prefs)
+                },
+                onError: { (error) in
+                    print(error.localizedDescription)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    func requestRestraunt(prefCode: Int, onPage page: Int, onSuccess: @escaping (GnaviResults) -> ()) {
+        APIClient.shared
+            .request(Gnavi.GetRestraunts(page: page, prefCode: String(prefCode)))
+            .subscribe(onSuccess: { (results) in
+                onSuccess(results)
+            }, onError: { (error) in
+                print(error.localizedDescription)
+                    fatalError()
+            })
+            .disposed(by: disposeBag)
+    }
 }
