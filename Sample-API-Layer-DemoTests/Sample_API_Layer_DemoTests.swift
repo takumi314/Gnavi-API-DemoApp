@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import Himotoki
 @testable import Sample_API_Layer_Demo
 
 class Sample_API_Layer_DemoTests: XCTestCase {
@@ -38,74 +37,65 @@ class Sample_API_Layer_DemoTests: XCTestCase {
     }
 
 
-    func testOrganizer() {
-        var JSON = ["total_hit_count": 50,
-                    "hit_per_page": 3,
-                    "page_offset": 100,
-                    "rest": ""] as [String : Any]
-
-        let null: Any? = nil
-        let json = ["": []]
-        XCTAssert(AreaLMasters.organizer(null) != nil)
-        XCTAssert(AreaLMasters.organizer(json) != nil)
-        XCTAssert(AreaLMasters.organizer(JSON) != nil)
-    }
-
     func testGnaviResults() {
+        // (注意)
+        // 非オプショナル型で宣言したプロパティがある場合には,
+        // ここに必ず定義しておく必要があります。
+        // さもないとデコード中にクラッシュが発生します.
 
-        var JSON = ["total_hit_count": 50,
-                                   "hit_per_page": 3,
-                                   "page_offset": 100,
-                                   "rest": ""] as [String : Any]
-        guard let json = JSON as? Extractor else {
-            return
-        }
-
-        let gnavi = try? GnaviResults.decode(json)
-        XCTAssert(gnavi == nil)
-        XCTAssert(gnavi?.count == 50)
-        XCTAssert(gnavi?.page == 3)
-        XCTAssert(gnavi?.pageOffset == 100)
-        XCTAssert(gnavi?.rest == nil)
-
-        JSON["rest"] = nil
+        // given
+        var object = Dictionary<String, Any>()
+        object["total_hit_count"] = "30"
+        object["hit_per_page"] = "3"
+        object["page_offset"] = "100"
+        object["rest"] = []
+        var data: Data
         do {
-            try GnaviResults.decodeValue(JSON)
-        } catch let DecodeError.missingKeyPath(keyPath) {
-            XCTAssert(keyPath == "rest")
-        } catch {
-            XCTFail()
+            let jsonData = try! JSONSerialization.data(withJSONObject: object, options: [])
+            let string = String(data: jsonData, encoding: .utf8)!
+            data = string.data(using: .utf8)!
         }
 
+        // when
+        let gnavi = try! JSONDecoder().decode(GnaviResults.self, from: data)
+
+        // then
+        XCTAssertTrue(gnavi.page == 3)
+        XCTAssertTrue(gnavi.pageOffset == 100)
+        XCTAssertTrue(gnavi.count == 30)
     }
 
     func testRestraunts(){
-//        var JSON: [String: Any] = ["name": "Hoge ほげ屋",
-//                                   "access": ["station": "東京",
-//                                              "walk": 5],
-//                                   "address": "埼玉県北本市",
-//                                   "image_url": ["shop_image1": "https://yahoo.co.jp"],
-//                                   "budget": 5000,
-//                                   "tel": "0000-00-0001"]
-//
-//        let group = try? Restraunt.decodeValue(JSON)
-//        XCTAssert(group == nil)
-//        XCTAssert(group?.name == "Hoge ほげ屋")
-//        XCTAssert(group?.station == "東京")
-//        XCTAssert(group?.walk == 5)
-//        XCTAssert(group?.address == "埼玉県北本市")
-//        XCTAssert(group?.tel == "0000-00-0001")
-//        XCTAssert(group?.budget == 5000)
-//        XCTAssert(group?.thumbnailURL == "https://yahoo.co.jp")
-//
-//        JSON["rest"] = nil
-//        do {
-//            try Restraunt.decodeValue(JSON)
-//        } catch let DecodeError.missingKeyPath(keyPath) {
-//            XCTAssert(keyPath == "rest")
-//        } catch {
-//            XCTFail()
-//        }
+        // (注意)
+        // 非オプショナル型で宣言しているプロパティがある場合には,
+        // ここに必ず定義しておく必要があります。
+        // さもないとデコード中にクラッシュが発生します.
+
+        // given
+        var object = Dictionary<String, Any>()
+        object["name"] = "Hoge ほげ屋"
+        object["access"] = ["station": "東京", "walk": "5"]
+        object["address"] = "埼玉県北本市"
+        object["image_url"] = ["shop_image1": "https://yahoo.co.jp"]
+        object["budget"] = "5000"
+        object["tel"] = "0000-00-0001"
+        object["walk"] = ""
+        object["id"] = "1234"
+        let jsonData = try! JSONSerialization.data(withJSONObject: object, options: [])
+        let string = String(data: jsonData, encoding: .utf8)!
+        let data = string.data(using: .utf8)!
+
+        // when
+        let restraunt = try! JSONDecoder().decode(Restraunt.self, from: data)
+
+        // then
+        XCTAssertTrue(restraunt.name == "Hoge ほげ屋")
+        XCTAssertTrue(restraunt.station == "東京")
+        XCTAssertTrue(restraunt.walk == "5")
+        XCTAssertTrue(restraunt.address == "埼玉県北本市")
+        XCTAssertTrue(restraunt.tel == "0000-00-0001")
+        XCTAssertTrue(restraunt.budget == 5000)
+        XCTAssertTrue(restraunt.thumbnailURL == "https://yahoo.co.jp")
     }
     
 }
