@@ -29,7 +29,7 @@ extension Gnavi {
                 "callback": "",
                 "pref": prefCode,
                 "areacode_l": "",
-                "hit_per_page": ONCE_READ_COUNT,
+                "hit_per_page": APIConfiguration.once_read_count,
                 "offset_page": page] as [String : Any]
             return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
         }
@@ -38,7 +38,7 @@ extension Gnavi {
         private let prefCode: String
         private let perPage: Int
 
-        init(page: Int, prefCode: String, perPage: Int = ONCE_READ_COUNT) {
+        init(page: Int, prefCode: String, perPage: Int = APIConfiguration.once_read_count) {
             self.page   = page
             self.prefCode = prefCode
             self.perPage = perPage
