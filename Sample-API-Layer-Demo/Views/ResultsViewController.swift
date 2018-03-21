@@ -12,7 +12,6 @@ class ResultsViewController: UIViewController {
 
     // MAEK: - Properties
 
-    var restraunts: [Restraunt] = []
     var details: GnaviResults?
     var masterType: APIMasterType = .restraunt // default
 
