@@ -15,7 +15,7 @@ class ResultsViewController: UIViewController {
     var details: GnaviResults?
     var masterType: APIMasterType = .restraunt // default
 
-    var prefCode: Int = -1
+    var prefCode: String = ""
     var onLoading = false
 
     private var refreshControl: UIRefreshControl?

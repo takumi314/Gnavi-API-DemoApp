@@ -44,9 +44,9 @@ struct APIClient {
             .disposed(by: disposeBag)
     }
 
-    func requestRestraunt(prefCode: Int, onPage page: Int, onSuccess: @escaping (GnaviResults) -> ()) {
+    func requestRestraunt(prefCode: String, onPage page: Int, onSuccess: @escaping (GnaviResults) -> ()) {
         APIClient.shared
-            .request(Gnavi.GetRestraunts(page: page, prefCode: String(prefCode)))
+            .request(Gnavi.GetRestraunts(page: page, prefCode: prefCode))
             .subscribe(onSuccess: { (results) in
                 onSuccess(results)
             }, onError: { (error) in

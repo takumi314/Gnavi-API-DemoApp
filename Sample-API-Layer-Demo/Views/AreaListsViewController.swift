@@ -168,7 +168,7 @@ extension AreaListsViewController: UITableViewDelegate {
         let prefCode = areas[indexPath.row].prefCode
         let vc = ResultsViewController()
         vc.title = "Restraunt"
-        vc.prefCode = Int(prefCode)!
+        vc.prefCode = prefCode
         vc.masterType = .restraunt
         
         navigationController?.pushViewController(vc, animated: true)
