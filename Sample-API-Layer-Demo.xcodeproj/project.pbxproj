@@ -160,6 +160,7 @@
 		E10CE2B81EA3672D008A5743 /* Sample-API-Layer-Demo */ = {
 			isa = PBXGroup;
 			children = (
+				E15597B020635D8C00AA8524 /* LocalRepository */,
 				E1AC10B4205E55940085B679 /* API */,
 				E1735AD01EA3E7A200300490 /* Views */,
 				E1735ACF1EA3E78800300490 /* Others */,
@@ -190,6 +191,13 @@
 				E10CE2DA1EA36A0D008A5743 /* Alamofire.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E15597B020635D8C00AA8524 /* LocalRepository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = LocalRepository;
 			sourceTree = "<group>";
 		};
 		E1735ABF1EA38AC300300490 /* Utils */ = {
