@@ -98,6 +98,7 @@ class ResultsViewController: UIViewController {
             APIClient.shared.requestRestraunt(prefCode: prefCode, onPage: page) {
                 (results: GnaviResults) in
                 self.details = results
+                self.resultTableView?.reloadData()
             }
         } else {
             print("Failed to access")

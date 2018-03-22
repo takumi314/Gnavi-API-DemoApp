@@ -61,6 +61,7 @@ class AreaListsViewController: UIViewController {
             APIClient.shared.requestPrefactures {
                 (prefactures: [Prefacture]) in
                 self.areas = prefactures
+                self.areaTableView?.reloadData()
             }
         } else {
             print("Failed to access")
