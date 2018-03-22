@@ -29,6 +29,7 @@
 		E15597B220635E9A00AA8524 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15597B120635E9900AA8524 /* Database.swift */; };
 		E15597B420639D7A00AA8524 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15597B320639D7900AA8524 /* Realm.framework */; };
 		E15597B620639D8C00AA8524 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15597B520639D8C00AA8524 /* RealmSwift.framework */; };
+		E15597B820639FD200AA8524 /* Database+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15597B720639FD200AA8524 /* Database+Realm.swift */; };
 		E1735AC41EA38BF700300490 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1735AC31EA38BF700300490 /* NetworkManager.swift */; };
 		E1735AC61EA3945500300490 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1735AC51EA3945500300490 /* Router.swift */; };
 		E1735AC81EA3B4AA00300490 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1735AC71EA3B4AA00300490 /* APIClient.swift */; };
@@ -82,6 +83,7 @@
 		E15597B120635E9900AA8524 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Database.swift; path = Repository/Database.swift; sourceTree = "<group>"; };
 		E15597B320639D7900AA8524 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		E15597B520639D8C00AA8524 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		E15597B720639FD200AA8524 /* Database+Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Database+Realm.swift"; path = "Repository/Database+Realm.swift"; sourceTree = "<group>"; };
 		E1735AC31EA38BF700300490 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = Utils/NetworkManager.swift; sourceTree = "<group>"; };
 		E1735AC51EA3945500300490 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Router.swift; path = Utils/Router.swift; sourceTree = "<group>"; };
 		E1735AC71EA3B4AA00300490 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClient.swift; path = Utils/APIClient.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				E15597B120635E9900AA8524 /* Database.swift */,
+				E15597B720639FD200AA8524 /* Database+Realm.swift */,
 			);
 			name = LocalRepository;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				E1735ACB1EA3DC9200300490 /* Restraunt.swift in Sources */,
 				E14D04381EA91FD700D9A8E4 /* RestrauntTableViewCell.swift in Sources */,
 				E1AC10BC205EB3E10085B679 /* Api+Prefactures.swift in Sources */,
+				E15597B820639FD200AA8524 /* Database+Realm.swift in Sources */,
 				E12C3EB71EABB96D00553EB7 /* AsyncImageView.swift in Sources */,
 				E13FEEEB1EACB2D90099C5D6 /* ResultsViewController.swift in Sources */,
 				E1735AC61EA3945500300490 /* Router.swift in Sources */,
