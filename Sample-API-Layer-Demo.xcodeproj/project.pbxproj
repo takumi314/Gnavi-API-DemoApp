@@ -25,6 +25,7 @@
 		E14D04361EA7D17B00D9A8E4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14D04351EA7D17B00D9A8E4 /* BaseViewController.swift */; };
 		E14D04381EA91FD700D9A8E4 /* RestrauntTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14D04371EA91FD600D9A8E4 /* RestrauntTableViewCell.swift */; };
 		E14D043A1EA922EC00D9A8E4 /* RestrauntTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E14D04391EA922EB00D9A8E4 /* RestrauntTableViewCell.xib */; };
+		E15597AF2063574600AA8524 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10CE2DA1EA36A0D008A5743 /* Alamofire.framework */; };
 		E1735AC41EA38BF700300490 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1735AC31EA38BF700300490 /* NetworkManager.swift */; };
 		E1735AC61EA3945500300490 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1735AC51EA3945500300490 /* Router.swift */; };
 		E1735AC81EA3B4AA00300490 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1735AC71EA3B4AA00300490 /* APIClient.swift */; };
@@ -33,7 +34,6 @@
 		E1AC10AA205D3B260085B679 /* RxMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AC10A9205D3B260085B679 /* RxMoya.framework */; };
 		E1AC10AC205D3B410085B679 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AC10AB205D3B410085B679 /* Result.framework */; };
 		E1AC10AE205D3B760085B679 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AC10AD205D3B760085B679 /* RxSwift.framework */; };
-		E1AC10B1205D58EA0085B679 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10CE2DA1EA36A0D008A5743 /* Alamofire.framework */; };
 		E1AC10B2205D73E90085B679 /* GnaviResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1315D671EA5290C00E57A6B /* GnaviResults.swift */; };
 		E1AC10B6205E55EE0085B679 /* Api+Restraunt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC10B5205E55EE0085B679 /* Api+Restraunt.swift */; };
 		E1AC10B7205E55EE0085B679 /* Api+Restraunt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC10B5205E55EE0085B679 /* Api+Restraunt.swift */; };
@@ -94,7 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1AC10B1205D58EA0085B679 /* Alamofire.framework in Frameworks */,
+				E15597AF2063574600AA8524 /* Alamofire.framework in Frameworks */,
 				E1AC10AE205D3B760085B679 /* RxSwift.framework in Frameworks */,
 				E1AC10AC205D3B410085B679 /* Result.framework in Frameworks */,
 				E1AC10AA205D3B260085B679 /* RxMoya.framework in Frameworks */,
