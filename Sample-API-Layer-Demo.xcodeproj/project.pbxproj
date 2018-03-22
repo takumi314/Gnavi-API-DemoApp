@@ -26,6 +26,7 @@
 		E14D04381EA91FD700D9A8E4 /* RestrauntTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14D04371EA91FD600D9A8E4 /* RestrauntTableViewCell.swift */; };
 		E14D043A1EA922EC00D9A8E4 /* RestrauntTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E14D04391EA922EB00D9A8E4 /* RestrauntTableViewCell.xib */; };
 		E15597AF2063574600AA8524 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10CE2DA1EA36A0D008A5743 /* Alamofire.framework */; };
+		E15597B220635E9A00AA8524 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15597B120635E9900AA8524 /* Database.swift */; };
 		E1735AC41EA38BF700300490 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1735AC31EA38BF700300490 /* NetworkManager.swift */; };
 		E1735AC61EA3945500300490 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1735AC51EA3945500300490 /* Router.swift */; };
 		E1735AC81EA3B4AA00300490 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1735AC71EA3B4AA00300490 /* APIClient.swift */; };
@@ -76,6 +77,7 @@
 		E14D04351EA7D17B00D9A8E4 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Views/BaseViewController.swift; sourceTree = "<group>"; };
 		E14D04371EA91FD600D9A8E4 /* RestrauntTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = RestrauntTableViewCell.swift; path = Views/RestrauntTableViewCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E14D04391EA922EB00D9A8E4 /* RestrauntTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RestrauntTableViewCell.xib; path = Views/RestrauntTableViewCell.xib; sourceTree = "<group>"; };
+		E15597B120635E9900AA8524 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Database.swift; path = Repository/Database.swift; sourceTree = "<group>"; };
 		E1735AC31EA38BF700300490 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = Utils/NetworkManager.swift; sourceTree = "<group>"; };
 		E1735AC51EA3945500300490 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Router.swift; path = Utils/Router.swift; sourceTree = "<group>"; };
 		E1735AC71EA3B4AA00300490 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClient.swift; path = Utils/APIClient.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 		E15597B020635D8C00AA8524 /* LocalRepository */ = {
 			isa = PBXGroup;
 			children = (
+				E15597B120635E9900AA8524 /* Database.swift */,
 			);
 			name = LocalRepository;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				E1735AC81EA3B4AA00300490 /* APIClient.swift in Sources */,
 				E10CE2BA1EA3672D008A5743 /* AppDelegate.swift in Sources */,
 				E1AC10B9205E580F0085B679 /* GnaviApi.swift in Sources */,
+				E15597B220635E9A00AA8524 /* Database.swift in Sources */,
 				E12C3EBD1EAC644200553EB7 /* AreaSearchStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
