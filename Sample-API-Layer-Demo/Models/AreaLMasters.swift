@@ -27,9 +27,15 @@ struct AreaLMasters: Codable {
 }
 
 struct Prefacture: Codable {
-    let areaCode: String
-    let prefCode: String
-    let prefName: String
+    var areaCode: String = ""
+    var prefCode: String = ""
+    var prefName: String = ""
+
+    init(areaCode: String, prefCode: String, prefName: String) {
+        self.areaCode = areaCode
+        self.prefCode = prefCode
+        self.prefName = prefName
+    }
 
     enum Key: String, CodingKey {
         case areaCode = "area_code"
