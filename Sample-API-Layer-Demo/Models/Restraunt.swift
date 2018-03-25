@@ -21,7 +21,9 @@ struct Restraunt: Codable {
     init(budget: Int, id: Int, thumbnailURL: String, name: String, address: String, station: String, walk: String, tel: String) {
         self.budget     = budget
         self.id         = String(id)
-        self.name       = address
+        self.thumbnailURL = thumbnailURL
+        self.name       = name
+        self.address    = address
         self.station    = station
         self.walk       = walk
         self.tel        = tel
