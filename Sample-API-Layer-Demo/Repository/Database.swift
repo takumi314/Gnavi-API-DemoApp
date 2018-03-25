@@ -9,20 +9,21 @@
 import Foundation
 
 typealias Database = ReadableDatabase & WritableDatabase
-typealias Query = (() -> Bool)
-
-protocol Model { }
 
 protocol ReadableDatabase {
-    func loadAllObjects<T: Model>() -> [T]
-    func loadObjects<T: Model>(matching query: Query) -> [T]
-    func loadObject<T: Model>(withID id: String) -> T?
+    typealias Query = ((Model) -> Bool)
+    associatedtype Model
+    func loadAllObjects() -> [Model]
+    func loadObjects(matching query: Query) -> [Model]
+    func loadObject(withID id: String) -> Model?
+}
+
+extension ReadableDatabase {
 }
 
 protocol WritableDatabase {
-    func save<T: Model>(_ object: T) -> Bool
-    func update<T: Model>(_ object: T) -> Bool
+    associatedtype Model
+    func save(_ object: Model) -> Bool
+    func update(_ object: Model) -> Bool
     func delete(withID id: String) -> Bool
 }
-
-
