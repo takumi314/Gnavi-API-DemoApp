@@ -32,6 +32,8 @@
 		E15597B820639FD200AA8524 /* Database+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15597B720639FD200AA8524 /* Database+Realm.swift */; };
 		E15597BA2063CB5500AA8524 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15597B92063CB5500AA8524 /* Favorite.swift */; };
 		E15597BB2063CB5500AA8524 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15597B92063CB5500AA8524 /* Favorite.swift */; };
+		E15597BD2067D5C700AA8524 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15597BC2067D5C700AA8524 /* FavoriteViewController.swift */; };
+		E15597BE2067D5C700AA8524 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15597BC2067D5C700AA8524 /* FavoriteViewController.swift */; };
 		E1735AC41EA38BF700300490 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1735AC31EA38BF700300490 /* NetworkManager.swift */; };
 		E1735AC61EA3945500300490 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1735AC51EA3945500300490 /* Router.swift */; };
 		E1735AC81EA3B4AA00300490 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1735AC71EA3B4AA00300490 /* APIClient.swift */; };
@@ -87,6 +89,7 @@
 		E15597B520639D8C00AA8524 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		E15597B720639FD200AA8524 /* Database+Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Database+Realm.swift"; path = "Repository/Database+Realm.swift"; sourceTree = "<group>"; };
 		E15597B92063CB5500AA8524 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Favorite.swift; path = Models/Favorite.swift; sourceTree = "<group>"; };
+		E15597BC2067D5C700AA8524 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoriteViewController.swift; path = Views/FavoriteViewController.swift; sourceTree = "<group>"; };
 		E1735AC31EA38BF700300490 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = Utils/NetworkManager.swift; sourceTree = "<group>"; };
 		E1735AC51EA3945500300490 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Router.swift; path = Utils/Router.swift; sourceTree = "<group>"; };
 		E1735AC71EA3B4AA00300490 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClient.swift; path = Utils/APIClient.swift; sourceTree = "<group>"; };
@@ -140,6 +143,7 @@
 		E10AD6C21EBE1CE800B7FA3F /* SecondTabViews */ = {
 			isa = PBXGroup;
 			children = (
+				E15597BC2067D5C700AA8524 /* FavoriteViewController.swift */,
 			);
 			name = SecondTabViews;
 			sourceTree = "<group>";
@@ -425,6 +429,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E15597BD2067D5C700AA8524 /* FavoriteViewController.swift in Sources */,
 				E1315D681EA5290C00E57A6B /* GnaviResults.swift in Sources */,
 				E12C3EB91EAC1CC000553EB7 /* AreaLMasters.swift in Sources */,
 				E10AD6BF1EBCB87900B7FA3F /* MainTabBarController.swift in Sources */,
@@ -457,6 +462,7 @@
 				E15597BB2063CB5500AA8524 /* Favorite.swift in Sources */,
 				E1AC10B2205D73E90085B679 /* GnaviResults.swift in Sources */,
 				E12C3EBA1EAC32E700553EB7 /* AreaLMasters.swift in Sources */,
+				E15597BE2067D5C700AA8524 /* FavoriteViewController.swift in Sources */,
 				E14D04341EA7B3A500D9A8E4 /* Sample_API_Layer_DemoTests.swift in Sources */,
 				E1315D6A1EA666A100E57A6B /* Restraunt.swift in Sources */,
 				E1AC10BD205EB3E10085B679 /* Api+Prefactures.swift in Sources */,
