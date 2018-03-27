@@ -23,17 +23,24 @@ class FavoriteObject: Object {
     @objc dynamic var id = 0
     @objc dynamic var restraunt: RestrauntObject?
     @objc dynamic var prefacture: PrefatureObject?
+    @objc dynamic var created: Date?
+    @objc dynamic var updated: Date?
 
     override static func primaryKey() -> String? {
         return "id"
     }
 
-    func set(id: Int, prefature: Prefacture, restraunt: Restraunt) {
+    func set(id: Int, prefature: Prefacture, restraunt: Restraunt, update: Bool = false) {
         self.id = id
         self.restraunt = RestrauntObject()
         self.prefacture = PrefatureObject()
         self.restraunt?.set(restraunt)
         self.prefacture?.set(prefature)
+        if update {
+            self.updated = Date()
+        } else {
+            self.created = Date()
+        }
     }
 
     var prefactureModel: Prefacture? {

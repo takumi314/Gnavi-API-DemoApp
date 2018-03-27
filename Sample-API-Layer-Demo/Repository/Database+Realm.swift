@@ -75,7 +75,8 @@ class RealmManager<U>: Database {
                 favorite.set(
                     id: nextId,
                     prefature: object.prefature,
-                    restraunt: object.restraunt
+                    restraunt: object.restraunt,
+                    update: true
                 )
                 realm.add(favorite, update: true)
             }
