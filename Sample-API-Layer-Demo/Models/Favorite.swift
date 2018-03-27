@@ -12,10 +12,12 @@ import RealmSwift
 struct FavoriteModel {
     var prefature: Prefacture
     var restraunt: Restraunt
+    var id: Int
 
-    init(prefature: Prefacture, restraunt: Restraunt) {
-        self.prefature = prefature
-        self.restraunt = restraunt
+    init(prefature: Prefacture, restraunt: Restraunt, id: Int = -1) {
+        self.prefature  = prefature
+        self.restraunt  = restraunt
+        self.id         = id
     }
 }
 

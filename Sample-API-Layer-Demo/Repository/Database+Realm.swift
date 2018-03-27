@@ -23,7 +23,7 @@ class RealmManager<U>: Database {
             return Array(result).flatMap({
                 guard let pref = $0.prefactureModel, let rest = $0.restrauntModel
                     else { return nil }
-                return FavoriteModel(prefature: pref, restraunt: rest) as? Model
+                return FavoriteModel(prefature: pref, restraunt: rest, id: $0.id) as? Model
             })
         default:
             fatalError()
@@ -88,7 +88,7 @@ class RealmManager<U>: Database {
     func delete(withID id: String) -> Bool {
         switch Model.self {
         case is FavoriteModel.Type:
-            guard let result = realm.object(ofType: objectType, forPrimaryKey: id)
+            guard let result = realm.objects(FavoriteObject.self).filter({ $0.id == Int(id)! }).first
                 else { return false }
             return transaction { (realm) in
                 realm.delete(result)
