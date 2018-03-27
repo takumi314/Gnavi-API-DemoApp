@@ -10,7 +10,7 @@ import UIKit
 
 class FavoriteTableViewDataSource: NSObject, UITableViewDataSource {
 
-    private var favorites: [FavoriteModel]
+    var favorites: [FavoriteModel]
 
     init(_ favorites: [FavoriteModel]) {
         self.favorites = favorites
