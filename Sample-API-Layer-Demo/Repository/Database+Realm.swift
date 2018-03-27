@@ -113,7 +113,7 @@ class RealmManager<U>: Database {
     }
 
     private var nextId: Int {
-        if let last = realm.objects(FavoriteObject.self).last {
+        if let last = realm.objects(FavoriteObject.self).sorted(by: { $0.id < $1.id }).last {
             return last.id + 1
         } else {
             return 0
