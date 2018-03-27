@@ -21,8 +21,9 @@ class MainTabBarController: UITabBarController {
         navigation.viewControllers = [areaViewController]
         controllers.append(navigation)
 
-        let secondViewController = UIViewController()
+        let secondViewController = FavoriteViewController()
         secondViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        secondViewController.tabBarItem.title = "Favorite"
         controllers.append(secondViewController)
 
         let thirdViewController = UIViewController()
