@@ -18,6 +18,17 @@ struct Restraunt: Codable {
     var walk: String = ""
     var tel: String = ""
 
+    init(budget: Int, id: Int, thumbnailURL: String, name: String, address: String, station: String, walk: String, tel: String) {
+        self.budget     = budget
+        self.id         = String(id)
+        self.thumbnailURL = thumbnailURL
+        self.name       = name
+        self.address    = address
+        self.station    = station
+        self.walk       = walk
+        self.tel        = tel
+    }
+
     enum Key: String, CodingKey {
         case budget = "budget"
         case id = "id"
