@@ -14,21 +14,31 @@ class ResultsViewController: UIViewController {
 
     var details: GnaviResults?
     var masterType: APIMasterType = .restraunt // default
-
-    var prefCode: String = ""
     var onLoading = false
 
+    private var prefacture: Prefacture
     private var refreshControl: UIRefreshControl?
 
     // IBOutlets
 
     @IBOutlet weak var resultTableView: UITableView?
 
+    // MARK: - Initializer
+
+    init(prefacture: Prefacture) {
+        self.prefacture = prefacture
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required convenience init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     // MARK: - Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Results"
+        self.title = prefacture.prefName
         loadRestraunts(onPage: 1)
     }
 
@@ -95,7 +105,7 @@ class ResultsViewController: UIViewController {
 
     fileprivate func loadRestraunts(onPage page: Int) {
         if NetworkManager.isAvailable() {
-            APIClient.shared.requestRestraunt(prefCode: prefCode, onPage: page) {
+            APIClient.shared.requestRestraunt(prefCode: prefacture.prefCode, onPage: page) {
                 (results: GnaviResults) in
                 self.details = results
                 self.resultTableView?.reloadData()
