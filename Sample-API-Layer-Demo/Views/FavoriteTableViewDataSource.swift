@@ -8,6 +8,30 @@
 
 import UIKit
 
-class FavoriteTableViewDataSource: UITableViewDataSource {
+class FavoriteTableViewDataSource: NSObject, UITableViewDataSource {
+
+    private var favorites: [FavoriteModel]
+
+    init(_ favorites: [FavoriteModel]) {
+        self.favorites = favorites
+    }
+    
+    // MARK: - UITableViewDataSource
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return favorites.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "rest") as? RestrauntTableViewCell
+            else { return RestrauntTableViewCell() }
+        let rest = favorites[indexPath.row].restraunt
+        cell.displayContent(of: rest)
+        return cell
+    }
 
 }
