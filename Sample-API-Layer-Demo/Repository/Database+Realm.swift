@@ -88,7 +88,7 @@ class RealmManager<U>: Database {
     func delete(withID id: String) -> Bool {
         switch Model.self {
         case is FavoriteModel.Type:
-            guard let result = realm.object(ofType: FavoriteObject.self, forPrimaryKey: id)
+            guard let result = realm.object(ofType: objectType, forPrimaryKey: id)
                 else { return false }
             return transaction { (realm) in
                 realm.delete(result)
@@ -117,6 +117,15 @@ class RealmManager<U>: Database {
             return last.id + 1
         } else {
             return 0
+        }
+    }
+
+    private var objectType: Object.Type {
+        switch Model.self {
+        case is FavoriteModel.Type:
+            return FavoriteObject.self
+        default:
+            fatalError()
         }
     }
 
