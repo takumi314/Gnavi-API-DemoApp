@@ -213,7 +213,19 @@ extension ResultsViewController: UITableViewDataSource {
 extension ResultsViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        moveToViewController(of: indexPath)
+        let restraunt = details?.rests[indexPath.row]
+        let alert = UIAlertController(title: "Favorite", message: "Are you sure?", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default) { (action) in
+            if self.saveFavarite(at: self.prefacture, restraunt: restraunt!) {
+                //
+            } else {
+                self.alertIfFailure()
+            }
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(action)
+        alert.addAction(cancel)
+        present(alert, animated: true)
     }
 
     func tableView(_ tableView: UITableView, canFocusRowAt indexPath: IndexPath) -> Bool {
@@ -250,6 +262,19 @@ extension ResultsViewController: UITableViewDelegate {
             print("touched the bottom")
             turnToNext(page: details.pageOffset + 1)
         }
+    }
+
+    func saveFavarite(at prefacture: Prefacture, restraunt: Restraunt) -> Bool {
+        let manager = RealmManager<FavoriteModel>()
+        let favorite = FavoriteModel(prefature: prefacture, restraunt: restraunt)
+        return manager.save(favorite)
+    }
+
+    func alertIfFailure() {
+        let alert = UIAlertController(title: "Failure", message: "Failed saving", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "OK", style: .cancel)
+        alert.addAction(cancel)
+        self.present(alert, animated: true)
     }
 
     fileprivate func turnToNext(page nextPage: Int) {
