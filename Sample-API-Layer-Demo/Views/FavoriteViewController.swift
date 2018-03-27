@@ -75,6 +75,35 @@ class FavoriteViewController: UIViewController {
 
 extension FavoriteViewController: UITableViewDelegate {
 
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let clearButton = UITableViewRowAction(style: .destructive, title: "Clear") {
+            (action, index) in
+            let favorite = self.dataSource.favorites[indexPath.row]
+            if RealmManager<FavoriteModel>().delete(withID: String(favorite.id)) {
+                self.dataSource.favorites.remove(at: indexPath.row)
+                self.tableView?.deleteRows(at: [indexPath], with: .fade)
+            }
+        }
+        return [clearButton]
+    }
+
+    @available(iOS 11.0, *)
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let clear = UIContextualAction(style: .normal, title: "Clear") {
+            (action, sourceView, completionHandler) in
+            completionHandler(true)
+            let favorite = self.dataSource.favorites[indexPath.row]
+            if RealmManager<FavoriteModel>().delete(withID: String(favorite.id)) {
+                self.dataSource.favorites.remove(at: indexPath.row)
+                self.tableView?.deleteRows(at: [indexPath], with: .fade)
+            }
+        }
+        let configuration = UISwipeActionsConfiguration(actions: [clear])
+        configuration.performsFirstActionWithFullSwipe = false
+        return configuration
+    }
+
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.0
     }
