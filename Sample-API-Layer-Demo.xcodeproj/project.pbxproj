@@ -36,6 +36,7 @@
 		E15597BE2067D5C700AA8524 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15597BC2067D5C700AA8524 /* FavoriteViewController.swift */; };
 		E15597C02067D71A00AA8524 /* FavoriteTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15597BF2067D71A00AA8524 /* FavoriteTableViewDataSource.swift */; };
 		E15597C12067D71A00AA8524 /* FavoriteTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15597BF2067D71A00AA8524 /* FavoriteTableViewDataSource.swift */; };
+		E15597C6206BD10500AA8524 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15597C5206BD10500AA8524 /* Coordinator.swift */; };
 		E1735AC41EA38BF700300490 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1735AC31EA38BF700300490 /* NetworkManager.swift */; };
 		E1735AC61EA3945500300490 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1735AC51EA3945500300490 /* Router.swift */; };
 		E1735AC81EA3B4AA00300490 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1735AC71EA3B4AA00300490 /* APIClient.swift */; };
@@ -93,6 +94,7 @@
 		E15597B92063CB5500AA8524 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Favorite.swift; path = Models/Favorite.swift; sourceTree = "<group>"; };
 		E15597BC2067D5C700AA8524 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoriteViewController.swift; path = Views/FavoriteViewController.swift; sourceTree = "<group>"; };
 		E15597BF2067D71A00AA8524 /* FavoriteTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoriteTableViewDataSource.swift; path = Views/FavoriteTableViewDataSource.swift; sourceTree = "<group>"; };
+		E15597C5206BD10500AA8524 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Coordinator.swift; path = Coodinators/Coordinator.swift; sourceTree = "<group>"; };
 		E1735AC31EA38BF700300490 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = Utils/NetworkManager.swift; sourceTree = "<group>"; };
 		E1735AC51EA3945500300490 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Router.swift; path = Utils/Router.swift; sourceTree = "<group>"; };
 		E1735AC71EA3B4AA00300490 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClient.swift; path = Utils/APIClient.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 		E15597C4206BD03400AA8524 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				E15597C5206BD10500AA8524 /* Coordinator.swift */,
 			);
 			name = Coordinators;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				E14D04301EA7A3E500D9A8E4 /* AreaListsViewController.swift in Sources */,
 				E1735ACB1EA3DC9200300490 /* Restraunt.swift in Sources */,
 				E14D04381EA91FD700D9A8E4 /* RestrauntTableViewCell.swift in Sources */,
+				E15597C6206BD10500AA8524 /* Coordinator.swift in Sources */,
 				E1AC10BC205EB3E10085B679 /* Api+Prefactures.swift in Sources */,
 				E15597B820639FD200AA8524 /* Database+Realm.swift in Sources */,
 				E12C3EB71EABB96D00553EB7 /* AsyncImageView.swift in Sources */,
