@@ -181,6 +181,7 @@
 		E10CE2B81EA3672D008A5743 /* Sample-API-Layer-Demo */ = {
 			isa = PBXGroup;
 			children = (
+				E15597C4206BD03400AA8524 /* Coordinators */,
 				E15597B020635D8C00AA8524 /* LocalRepository */,
 				E1AC10B4205E55940085B679 /* API */,
 				E1735AD01EA3E7A200300490 /* Views */,
@@ -223,6 +224,13 @@
 				E15597B720639FD200AA8524 /* Database+Realm.swift */,
 			);
 			name = LocalRepository;
+			sourceTree = "<group>";
+		};
+		E15597C4206BD03400AA8524 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Coordinators;
 			sourceTree = "<group>";
 		};
 		E1735ABF1EA38AC300300490 /* Utils */ = {
