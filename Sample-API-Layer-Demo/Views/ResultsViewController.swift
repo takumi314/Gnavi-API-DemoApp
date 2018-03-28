@@ -8,10 +8,15 @@
 
 import UIKit
 
+protocol ResultsViewControllerDelegate: class {
+    func ResultsViewControllerDidSelect(_ viewController: ResultsViewController, at restrant: Restraunt)
+}
+
 class ResultsViewController: UIViewController {
 
     // MAEK: - Properties
 
+    weak var delegate: ResultsViewControllerDelegate?
     var details: GnaviResults?
     var masterType: APIMasterType = .restraunt // default
     var onLoading = false

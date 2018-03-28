@@ -8,10 +8,15 @@
 
 import UIKit
 
+protocol AreaListsViewControllerDelegate: class {
+    func areaListsViewControllerDidSelect(_ viewController: AreaListsViewController, at prefacture: Prefacture)
+}
+
 class AreaListsViewController: UIViewController {
 
     // MAEK: - Properties
 
+    weak var delegate: AreaListsViewControllerDelegate?
     var areas: [Prefacture] = []
     var masterType: APIMasterType = .prefacture // default
 
