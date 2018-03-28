@@ -16,7 +16,7 @@ class RealmManager<U>: Database {
 
     // MARK: - ReadableDatabase
 
-    func loadAllObjects() -> [Model] {
+    public func loadAllObjects() -> [Model] {
         switch Model.self {
         case is FavoriteModel.Type:
             let result = realm.objects(FavoriteObject.self)
@@ -30,11 +30,11 @@ class RealmManager<U>: Database {
         }
     }
 
-    func loadObjects(matching query: Query) -> [Model] {
+    public func loadObjects(matching query: Query) -> [Model] {
         return loadAllObjects().lazy.filter(query)
     }
 
-    func loadObject(withID id: String) -> Model? {
+    public func loadObject(withID id: String) -> Model? {
         let id = Int(id)!
         switch Model.self {
         case is FavoriteModel.Type:
@@ -50,7 +50,7 @@ class RealmManager<U>: Database {
 
     // MARK: - WritableDatabase
 
-    func save(_ object: Model) -> Bool {
+    public func save(_ object: Model) -> Bool {
         switch object {
         case let object as FavoriteModel:
             return transaction { realm in
@@ -67,7 +67,7 @@ class RealmManager<U>: Database {
         }
     }
 
-    func update(_ object: Model) -> Bool {
+    public func update(_ object: Model) -> Bool {
         switch object {
         case let object as FavoriteModel:
             return transaction { realm in
@@ -85,7 +85,7 @@ class RealmManager<U>: Database {
         }
     }
 
-    func delete(withID id: String) -> Bool {
+    public func delete(withID id: String) -> Bool {
         switch Model.self {
         case is FavoriteModel.Type:
             guard let result = realm.objects(FavoriteObject.self).filter({ $0.id == Int(id)! }).first
@@ -98,7 +98,11 @@ class RealmManager<U>: Database {
         }
     }
 
+}
+
     // MARK: - Private
+
+extension RealmManager {
 
     private func transaction(_ handler: (Realm) throws -> ()) -> Bool {
         do {
