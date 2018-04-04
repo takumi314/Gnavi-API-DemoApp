@@ -8,10 +8,19 @@
 
 import UIKit
 
+protocol AreaListsViewControllerDelegate: class {
+    func areaListsViewControllerDidSelect(_ viewController: AreaListsViewController, at prefacture: Prefacture)
+}
+
 class AreaListsViewController: UIViewController {
 
     // MAEK: - Properties
 
+    weak var delegate: AreaListsViewControllerDelegate? {
+        didSet {
+            print("changed")
+        }
+    }
     var areas: [Prefacture] = []
     var masterType: APIMasterType = .prefacture // default
 
@@ -167,11 +176,7 @@ extension AreaListsViewController: UITableViewDelegate {
 
     func moveToViewController(of indexPath: IndexPath) {
         let prefacture = areas[indexPath.row]
-        let vc = ResultsViewController(prefacture: prefacture)
-        vc.title = "Restraunt"
-        vc.masterType = .restraunt
-        
-        navigationController?.pushViewController(vc, animated: true)
+        delegate?.areaListsViewControllerDidSelect(self, at: prefacture)
     }
 
 }

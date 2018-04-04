@@ -8,10 +8,15 @@
 
 import UIKit
 
+protocol ResultsViewControllerDelegate: class {
+    func ResultsViewControllerDidSelect(_ viewController: ResultsViewController, at restrant: Restraunt)
+}
+
 class ResultsViewController: UIViewController {
 
     // MAEK: - Properties
 
+    weak var delegate: ResultsViewControllerDelegate?
     var details: GnaviResults?
     var masterType: APIMasterType = .restraunt // default
     var onLoading = false
@@ -217,7 +222,7 @@ extension ResultsViewController: UITableViewDelegate {
         let alert = UIAlertController(title: "Favorite", message: "Are you sure?", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default) { (action) in
             if self.saveFavarite(at: self.prefacture, restraunt: restraunt!) {
-                //
+                self.delegate?.ResultsViewControllerDidSelect(self, at: restraunt!)
             } else {
                 self.alertIfFailure()
             }
