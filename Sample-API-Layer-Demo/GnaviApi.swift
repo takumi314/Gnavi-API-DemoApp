@@ -14,7 +14,7 @@ enum Gnavi {
 
     struct APIConfiguration {
         static let baseURLPath: String = "https://api.gnavi.co.jp/"
-        static let accessKey: String = "7b3a8ffca29de044520190eb3437adfe"
+        static let accessKey: String = ""
         static let once_read_count = 50
     }
 
