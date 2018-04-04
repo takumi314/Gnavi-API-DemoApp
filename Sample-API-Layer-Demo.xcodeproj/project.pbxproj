@@ -45,6 +45,8 @@
 		E1735ACB1EA3DC9200300490 /* Restraunt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1735ACA1EA3DC9200300490 /* Restraunt.swift */; };
 		E1A0CDCB2074437B00F713E1 /* AreaListsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A0CDCA2074437B00F713E1 /* AreaListsCoordinator.swift */; };
 		E1A0CDCC2074437B00F713E1 /* AreaListsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A0CDCA2074437B00F713E1 /* AreaListsCoordinator.swift */; };
+		E1A0CDCE20744F5D00F713E1 /* ResultCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A0CDCD20744F5D00F713E1 /* ResultCoordinator.swift */; };
+		E1A0CDCF20744F5D00F713E1 /* ResultCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A0CDCD20744F5D00F713E1 /* ResultCoordinator.swift */; };
 		E1AC10A8205D3B080085B679 /* Moya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AC10A7205D3B080085B679 /* Moya.framework */; };
 		E1AC10AA205D3B260085B679 /* RxMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AC10A9205D3B260085B679 /* RxMoya.framework */; };
 		E1AC10AC205D3B410085B679 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AC10AB205D3B410085B679 /* Result.framework */; };
@@ -106,6 +108,7 @@
 		E1735AC71EA3B4AA00300490 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClient.swift; path = Utils/APIClient.swift; sourceTree = "<group>"; };
 		E1735ACA1EA3DC9200300490 /* Restraunt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Restraunt.swift; path = Models/Restraunt.swift; sourceTree = "<group>"; };
 		E1A0CDCA2074437B00F713E1 /* AreaListsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AreaListsCoordinator.swift; path = Coodinators/AreaListsCoordinator.swift; sourceTree = "<group>"; };
+		E1A0CDCD20744F5D00F713E1 /* ResultCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResultCoordinator.swift; path = Coodinators/ResultCoordinator.swift; sourceTree = "<group>"; };
 		E1AC10A7205D3B080085B679 /* Moya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Moya.framework; path = Carthage/Build/iOS/Moya.framework; sourceTree = "<group>"; };
 		E1AC10A9205D3B260085B679 /* RxMoya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxMoya.framework; path = Carthage/Build/iOS/RxMoya.framework; sourceTree = "<group>"; };
 		E1AC10AB205D3B410085B679 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -242,6 +245,7 @@
 				E15597C7206BD24D00AA8524 /* ApplicationCoordinator.swift */,
 				E15597C9206BF4E700AA8524 /* FirstTabCoordinator.swift */,
 				E1A0CDCA2074437B00F713E1 /* AreaListsCoordinator.swift */,
+				E1A0CDCD20744F5D00F713E1 /* ResultCoordinator.swift */,
 			);
 			name = Coordinators;
 			sourceTree = "<group>";
@@ -479,6 +483,7 @@
 				E10CE2BA1EA3672D008A5743 /* AppDelegate.swift in Sources */,
 				E1AC10B9205E580F0085B679 /* GnaviApi.swift in Sources */,
 				E15597B220635E9A00AA8524 /* Database.swift in Sources */,
+				E1A0CDCE20744F5D00F713E1 /* ResultCoordinator.swift in Sources */,
 				E12C3EBD1EAC644200553EB7 /* AreaSearchStatus.swift in Sources */,
 				E15597C02067D71A00AA8524 /* FavoriteTableViewDataSource.swift in Sources */,
 			);
@@ -497,6 +502,7 @@
 				E1A0CDCC2074437B00F713E1 /* AreaListsCoordinator.swift in Sources */,
 				E14D04341EA7B3A500D9A8E4 /* Sample_API_Layer_DemoTests.swift in Sources */,
 				E1315D6A1EA666A100E57A6B /* Restraunt.swift in Sources */,
+				E1A0CDCF20744F5D00F713E1 /* ResultCoordinator.swift in Sources */,
 				E1AC10BD205EB3E10085B679 /* Api+Prefactures.swift in Sources */,
 				E1AC10B7205E55EE0085B679 /* Api+Restraunt.swift in Sources */,
 			);
