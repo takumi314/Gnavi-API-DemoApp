@@ -24,7 +24,6 @@
 		E14D04361EA7D17B00D9A8E4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14D04351EA7D17B00D9A8E4 /* BaseViewController.swift */; };
 		E14D04381EA91FD700D9A8E4 /* RestrauntTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14D04371EA91FD600D9A8E4 /* RestrauntTableViewCell.swift */; };
 		E14D043A1EA922EC00D9A8E4 /* RestrauntTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E14D04391EA922EB00D9A8E4 /* RestrauntTableViewCell.xib */; };
-		E15597AF2063574600AA8524 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10CE2DA1EA36A0D008A5743 /* Alamofire.framework */; };
 		E15597B220635E9A00AA8524 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15597B120635E9900AA8524 /* Database.swift */; };
 		E15597B420639D7A00AA8524 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15597B320639D7900AA8524 /* Realm.framework */; };
 		E15597B620639D8C00AA8524 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15597B520639D8C00AA8524 /* RealmSwift.framework */; };
@@ -50,6 +49,7 @@
 		E1A0CDD220751E2300F713E1 /* SecondTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A0CDD020751E2300F713E1 /* SecondTabCoordinator.swift */; };
 		E1A0CDD420751F6400F713E1 /* FavoriteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A0CDD320751F6400F713E1 /* FavoriteCoordinator.swift */; };
 		E1A0CDD520751F6400F713E1 /* FavoriteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A0CDD320751F6400F713E1 /* FavoriteCoordinator.swift */; };
+		E1A0CDD620763BFC00F713E1 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10CE2DA1EA36A0D008A5743 /* Alamofire.framework */; };
 		E1AC10A8205D3B080085B679 /* Moya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AC10A7205D3B080085B679 /* Moya.framework */; };
 		E1AC10AA205D3B260085B679 /* RxMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AC10A9205D3B260085B679 /* RxMoya.framework */; };
 		E1AC10AC205D3B410085B679 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AC10AB205D3B410085B679 /* Result.framework */; };
@@ -127,9 +127,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1A0CDD620763BFC00F713E1 /* Alamofire.framework in Frameworks */,
 				E15597B620639D8C00AA8524 /* RealmSwift.framework in Frameworks */,
 				E15597B420639D7A00AA8524 /* Realm.framework in Frameworks */,
-				E15597AF2063574600AA8524 /* Alamofire.framework in Frameworks */,
 				E1AC10AE205D3B760085B679 /* RxSwift.framework in Frameworks */,
 				E1AC10AC205D3B410085B679 /* Result.framework in Frameworks */,
 				E1AC10AA205D3B260085B679 /* RxMoya.framework in Frameworks */,
