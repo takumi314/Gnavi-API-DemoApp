@@ -8,10 +8,19 @@
 
 import UIKit
 
+protocol AreaListsViewControllerDelegate: class {
+    func areaListsViewControllerDidSelect(_ viewController: AreaListsViewController, at prefacture: Prefacture)
+}
+
 class AreaListsViewController: UIViewController {
 
     // MAEK: - Properties
 
+    weak var delegate: AreaListsViewControllerDelegate? {
+        didSet {
+            print("changed")
+        }
+    }
     var areas: [Prefacture] = []
     var masterType: APIMasterType = .prefacture // default
 
@@ -24,21 +33,7 @@ class AreaListsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Prefacture"
-        if NetworkManager.isAvailable() {
-            let api = APIClient()
-            api.request(router: .pref) { [weak self](response) in
-                switch response {
-                case .success(let data):
-                    self?.areas = AreaLMasters.organizer(data)
-                    self?.setAreaTableView()
-                    break
-                case .failure(let error):
-                    print(error)
-                    break
-                }
-            }
-        }
-
+        loadPrefactures()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -70,8 +65,20 @@ class AreaListsViewController: UIViewController {
 
     // MARK: - Private methods
 
+    private func loadPrefactures() {
+        if NetworkManager.isAvailable() {
+            APIClient.shared.requestPrefactures {
+                (prefactures: [Prefacture]) in
+                self.areas = prefactures
+                self.areaTableView?.reloadData()
+            }
+        } else {
+            print("Failed to access")
+        }
+    }
+
     private func setAreaTableView() {
-        let tableFrame = masureVisibleArea()
+        let tableFrame = measureVisibleArea()
         let tableView = UITableView(frame: tableFrame, style: .plain)
 
         areaTableView = tableView
@@ -81,15 +88,22 @@ class AreaListsViewController: UIViewController {
         view.addSubview(areaTableView!)
     }
 
-    private func masureVisibleArea() -> CGRect {
+    private func measureVisibleArea() -> CGRect {
         // 画面サイズ
         let size = UIScreen.main.bounds
         // ステータスバーの高さを取得
-        let statusBarHeight = UIApplication.shared.statusBarFrame.height
-        // ナビゲーションバーの高さを取得
-        let navBarHeight = self.navigationController?.navigationBar.frame.size.height
-        let tableSize = CGSize(width: size.width, height: size.height - statusBarHeight - navBarHeight!)
-        let point = CGPoint(x: 0, y: 0 + statusBarHeight + navBarHeight!)
+        let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
+        // ナビゲーションバー
+        let navBarFrame = self.navigationController?.navigationBar.frame
+        // タブバー
+        let tabBarFrame = super.tabBarController?.tabBar.frame
+        guard let navBarHeight = navBarFrame?.size.height, let tabBarHeight = tabBarFrame?.size.height else {
+                let tableSize = CGSize(width: size.width, height: size.height - 32.0 - 49.0)
+                let point = CGPoint(x: 0, y: 0 + statusBarHeight + 32)
+                return CGRect(origin: point, size: tableSize)
+        }
+        let tableSize = CGSize(width: size.width, height: size.height - navBarHeight - statusBarHeight - tabBarHeight)
+        let point = CGPoint(x: 0, y: 0 + navBarHeight + statusBarHeight)
 
         return CGRect(origin: point, size: tableSize)
     }
@@ -161,13 +175,8 @@ extension AreaListsViewController: UITableViewDelegate {
     }
 
     func moveToViewController(of indexPath: IndexPath) {
-        let prefCode = areas[indexPath.row].prefCode
-        let vc = ResultsViewController()
-        vc.title = "Restraunt"
-        vc.prefCode = prefCode
-        vc.masterType = .restraunt
-        
-        navigationController?.pushViewController(vc, animated: true)
+        let prefacture = areas[indexPath.row]
+        delegate?.areaListsViewControllerDidSelect(self, at: prefacture)
     }
 
 }
